@@ -1,0 +1,140 @@
+Linux是开放源码的多用户网络操作系统
+
+Linux发行版
+Linux内核与应用软件打包
+常见发行版
+发行家族 Debian Fedora SUSE
+Ubuntu CentOS Oracle ......
+
+Linux应用领域
+嵌入式设备 用户计算机 服务器
+
+
+安装Linux
+下载系统镜像ISO文件
+在windows中设置磁盘分配空间
+制作系统启动盘
+U盘启动安装
+
+
+Linux启动
+开始-BIOS检查-内核引导/boot-初始进程init-运行级别daemon-初始化/etc/init.d-建立终端-完毕
+关机
+sync保存数据-shutdown关机-halt终止系统
+
+
+Linux目录结构
+树状目录结构
+/ 根目录
+/bin 二进制命令
+/boot 启动文件
+/dev 设备
+/etc 系统配置
+/home 用户主目录
+/lib 库
+/lost+found 发生错误时存放的日志
+/media 设备媒体
+/mnt 文件系统挂载
+/opt 软件目录
+/proc 进程
+/root 系统管理员目录
+/sbin 系统管理员使用的管理程序
+/srv 服务需要的数据
+/sys 系统文件
+/tmp 临时文件
+/usr 用户目录
+/usr/bin 用户应用程序
+/usr/sbin 管理员应用程序
+/usr/src 内核源码放置目录
+/var 变量与日志
+/run 运行记录
+
+
+远程登录
+ssh服务可以远程控制服务器
+
+
+Linux文件属性
+ll 或 ls -l 显示文件属性
+
+首字符
+d 目录
+- 文件
+l 链接文档
+b 接口设备
+c 端口设备
+
+d rwx r-x r-x
+文件类型 属主 属组 其它用户
+
+更改文件属组
+chgrp [-R] 属组名 文件名
+
+更改文件所有者
+chown [–R] 所有者 文件名
+chown [-R] 所有者:属组名 文件名
+
+更改文件9个属性
+chmod [-R] xyz 文件或目录
+r4 w2 x1
+
+
+文件管理
+
+绝对路径 /
+相对路径 ./
+
+常用命令
+
+ls 列出文件
+-a全部 -d仅目录 -l详细
+[root@www ~]# ls [-aAdfFhilnrRSt] 目录名称
+
+cd 切换目录
+cd [相对路径或绝对路径]
+
+pwd 显示当前目录
+-P显示实际路径
+[root@www ~]# pwd [-P]
+
+mkdir 创建目录
+-m配置权限 -p递归创建
+mkdir [-mp] 目录名称
+
+rmdir 删除空目录
+-p一次删除多级目录
+rmdir [-p] 目录名称
+
+cp 复制
+-a相当于-pdr -d复制链接属性 -f强制 -i询问覆盖 -l硬式链接 -p一同复制属性 -r递归连续复制 -s复制为链接 -u升级destination
+[root@www ~]# cp [-adfilprsu] 来源档(source) 目标档(destination)
+
+rm 删除
+-f强制 -i询问 -r递归删除
+rm [-fir] 文件或目录
+
+mv 移动
+-f强制 -i询问 -u新的才覆盖
+[root@www ~]# mv [-fiu] source destination
+
+man [命令] 查看使用文档
+
+查看文件
+
+cat 显示文件内容
+-A特殊字符可见 -b列出行号 -显示断行$ -n严格列出行号 -T显示缩进 -v显示特殊字符
+cat [-AbEnTv]
+
+tac 从最后一行显示文件内容
+
+nl 显示行号
+
+more 翻动
+
+less 翻动
+
+head 取出文件前几行
+
+tail 取出文件后几行
+
+

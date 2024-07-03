@@ -1,0 +1,1117 @@
+Python是一种解释型、面向对象、动态数据类型的高级程序设计语言
+
+.py
+
+
+环境搭建
+Windows
+set path=%path%;C:\python34
+终端 >python
+运行安装程序并添加到Path，终端输入python开始使用。
+
+编写代码
+
+打包成exe程序
+pip install pyinstaller
+pyinstaller -F test.py
+
+
+基础语法
+注释 # """"""
+标识符
+关键字
+
+代码块
+缩进表示而非{}
+
+多行语句
+\
+
+数字类型
+int float bool complex
+
+字符串
+'' "" """"""定义字符串
+\ 转义符
+r使\不转义 例  r"this is a line with \n"
+字符串可用+连接 *重复
+索引字符串从0/-1开始
+字符串不可变
+截取字符串 变量[头下标:尾下标:步长]
+
+空行
+代码用空行隔开
+
+等待输入
+input()
+
+在一行上显示多个语句
+;隔开
+
+代码组
+缩进相同的语句构成代码组
+复合语句首行以:结束
+
+输出
+print()
+print(, end=" ") #不换行
+
+导入库
+import
+from...import
+from somemodule import function1,function2,...
+from somemodule import *
+
+命令行参数
+执行操作以查看基本信息
+
+
+
+基本数据类型
+Python中的变量不需要声明，没有类型区分。
+= 赋值
+a = b = c = 1
+a,b,c = 1,2,3 多变量赋值
+
+
+数据类型
+Number（数字）
+int float bool complex
+
+String（字符串）
+' " [0] [-1] [:] + *
+
+bool（布尔类型）
+True False (用is询问对错)
+
+List（列表）
+有序对象集合
+[] [0] [-1] [::] + *
+
+Tuple（元组）
+() 与列表类似但不可更改元素
+
+Set（集合）
+{} 符合数学概念
+
+Dictionary（字典）
+无序对象集合
+{'key':'value'}
+
+bytes 类型
+表示的是不可变的二进制序列
+
+
+数据类型转换
+隐式转换-解释器自动完成
+显式转换-需要使用函数
+
+常用转换函数
+int() float() str() tuple() list() set() dict()
+
+
+Python解释器
+IDLE 基本集成开发环境
+
+
+注释
+# xxx
+'''xxx'''
+"""xxx"""
+
+
+运算符
+算术
++ - * / % ** //
+
+比较
+== != > < >= <=
+
+赋值
+= += -= *= /= %= **= //= :=
+
+位运算（不常用）
+& | ^ ~ << >> 
+
+逻辑运算
+and or not
+
+成员运算
+in  not in
+
+身份运算
+is  is not
+
+运算符优先级
+读取，切片，调用，属性引用>
+乘方(指数)>
+乘，矩阵乘，除，整除，取余>
+加和减>
+比较运算>
+逻辑非>
+逻辑与>
+逻辑或>
+条件表达式>
+赋值
+
+
+数字
+del语句可删除变量
+1 1.0 1+i
+可将解释器作为简单计算器
+
+常见数学函数
+abs() #绝对值
+ceil() #向上取整
+exp() #返回e的x次幂
+fabs() #浮点数绝对值
+floor() #向下取整
+log(100,10) #对数运算
+max() #最大值
+min() #最小值
+round(x,n) #x的四舍五入,保留到n.
+sqrt() #返回平方根
+
+随机数函数
+import random
+choice(range(10)) #从序列中随机挑一个整数
+randrange([start,] stop [,step]) #按指定基数递增的集合中获取一个随机数
+seed() #改变随机数生成器的种子
+shuffle() #随机排序序列元素
+unifrom(x,y) #随机生成下一个实数
+
+三角函数
+sin()
+cos()
+tan()
+asin()
+acos()
+atan()
+
+数学常量
+pi π
+e e
+
+
+字符串
+访问
+txt = 'zhou'
+txt[0]
+txt[0:2]
+
+连接
+'zhou' + 'zhou'
+
+常用转义字符
+\ 续行
+\n 换行
+\r 回车
+
+字符串格式化
+name = 'zhou'
+print('我的名字是%s'%(name))
+print(f'我的名字是{name}')
+
+
+列表
+最常见的序列有列表和元组
+列表可修改
+list = [1,2,3]
+type() #查看类型
+
+访问
+list[0]
+list[0:2]
+
+更改
+list.append()
+list[] = _
+
+删除
+element = list.pop()
+del list[]
+
+脚本操作符
+len()
++ * in
+for x in [1,2,3]:print(x,end=" ") 迭代
+
+列表可嵌套
+
+列表比较
+import operator
+a = [1, 2]
+b = [2, 3]
+c = [2, 3]
+print("operator.eq(a,b): ", operator.eq(a,b))
+print("operator.eq(c,b): ", operator.eq(c,b))
+
+常见方法
+list.append() #末尾添加对象
+list.count() #数出元素个数
+list.extend() #末尾添加序列
+list.index() #寻找索引
+list.insert() #插入对象
+list.pop() #移除元素并返回值
+list.remove() #移除元素
+list.reverse() #倒序列表
+list.sort(key=None,reverse=False) #排序列表
+list.clear() #清空列表
+list.copy() #复制列表
+
+
+元组
+元组不可修改
+tuple = (1,2,3)
+访问
+tuple[0]
+tuple[0:2]
+
+删除
+del tuple
+
+运算符
+len()
++ in  for x in (1,2,3):print(x,end=" ") 迭代
+
+
+字典
+可变容器模型
+键值对表示
+dict1 = {key1:value1,key2:value2}
+
+访问值
+dict1[key1]
+
+修改
+dict1[key1] = 0
+dict2[key3] = value3
+
+删除
+del dict1[key1]
+dict1.clear()
+
+键的特性
+不允许同一个键出现两次
+键必须不可变，所以可以用数字，字符串或元组充当。
+
+内置函数
+len()
+str()
+type()
+
+常见方法
+dict.clear()
+dict.copy()
+dict.fromkeys() #以序列中的元素作为键创建字典
+dict.get(key, default=None) #返回指定key的值
+dict.items() #以列表返回一个视图对象
+dict.keys() #返回一个键视图对象
+dict.update(dict2)
+dict.values() #返回一个值视图对象
+dict.pop()
+dict.popitem() #返回并删除字典中的最后一对键和值
+
+
+集合
+无序的不重复元素序列
+set = {1,2,3}
+
+添加
+set.add()
+set.update()
+
+移除
+set.remove()
+set.discard()
+set.pop() #随机删除
+set.clear()
+
+常见内置函数
+add()
+clear()
+copy()
+union() #并集
+intersection() #交集
+difference() #差集
+len()
+
+
+条件控制
+if condition:
+	code
+elif condition:
+	code
+else:
+	code
+
+if语句可嵌套
+
+python 3.10 增加内容 match...case
+match subject:
+    case <pattern_1>:
+        <action_1>
+    case <pattern_2>:
+        <action_2>
+    case <pattern_3>:
+        <action_3>
+    case _:
+        <action_wildcard>
+
+例
+def http_error(status):
+    match status:
+        case 400:
+            return "Bad request"
+        case 404:
+            return "Not found"
+        case 418:
+            return "I'm a teapot"
+        case _:
+            return "Something's wrong with the internet"
+
+mystatus=400
+print(http_error(400))
+
+
+循环
+while condition:
+	code
+else:
+	code
+
+CTRL+C 退出当前的无限循环
+
+for variable in sequence:
+	statements
+else:
+	statements
+
+搭配的常见函数
+range(,,) #生成数列
+len()
+
+例
+# 遍历一个序列的索引
+list1 = ['baidu','bilibili','SMU','QQ']
+for i in range(len(list1)):
+	print(i,list1[i])
+
+break 立即结束循环
+continue 结束本次循环
+pass 空语句
+None 空元素
+
+
+Python推导式
+独特的数据处理方式，可以从一个数据序列构建另一个新的数据序列的结构体。
+
+列表推导式
+[表达式 for 变量 in 列表]
+[out_exp_res for out_exp in input_list]
+[表达式 for 变量 in 列表 if 条件]
+[out_exp_res for out_exp in input_list if condition]
+例
+# 过滤掉长度小于或等于3的字符串列表，并将剩下的转换成大写字母
+names = ['Bob','Tom','alice','Jerry','Wendy','Smith']
+new_names = [name.upper()for name in names if len(name)>3]
+print(new_names)
+# 计算 30 以内可以被 3 整除的整数
+multiples = [i for i in range(30) if i % 3 == 0]
+print(multiples)
+
+字典推导式
+{ key_expr: value_expr for value in collection }
+{ key_expr: value_expr for value in collection if condition }
+例
+# 使用字符串及其长度创建字典
+# 将列表中各字符串值为键，各字符串的长度为值，组成键值对
+listdemo = ['Google','Runoob', 'Taobao']
+newdict = {key:len(key) for key in listdemo}
+newdict
+# 提供三个数字，以三个数字为键，三个数字的平方为值来创建字典
+dic = {x: x**2 for x in (2, 4, 6)}
+dic{2: 4, 4: 16, 6: 36}
+type(dic)
+
+集合推导式
+{ expression for item in Sequence }
+{ expression for item in Sequence if conditional }
+例
+# 计算数字 1,2,3 的平方数
+setnew = {i**2 for i in (1,2,3)}
+# 判断不是 abc 的字母并输出
+a = {x for x in 'abracadabra' if x not in 'abc'}
+
+元组推导式
+(expression for item in Sequence )
+(expression for item in Sequence if conditional )
+例
+#生成一个包含数字 1~9 的元组
+a = (x for x in range(1,10))
+tuple(a)
+
+
+迭代器与生成器（先学习面向对象）
+迭代器
+访问集合元素的一种方式
+
+基本方法
+iter()
+next()
+list = [1,2,3,4]
+it = iter(list)
+print(next(it))
+print(next(it))
+# 迭代器对象可以使用常规for语句进行遍历
+list=[1,2,3,4]
+it = iter(list)    # 创建迭代器对象
+for x in it:
+    print (x, end=" ")
+# 也可以使用 next() 函数
+import sys         # 引入 sys 模块
+ 
+list=[1,2,3,4]
+it = iter(list)    # 创建迭代器对象
+ 
+while True:
+    try:
+        print (next(it))
+    except StopIteration:
+        sys.exit()
+
+创建迭代器
+class MyNumbers:
+  def __iter__(self):
+    self.a = 1
+    return self
+ 
+  def __next__(self):
+    x = self.a
+    self.a += 1
+    return x
+ 
+myclass = MyNumbers()
+myiter = iter(myclass)
+ 
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+
+StopIteration
+StopIteration 异常用于标识迭代的完成，防止出现无限循环的情况。
+class MyNumbers:
+  def __iter__(self):
+    self.a = 1
+    return self
+ 
+  def __next__(self):
+    if self.a <= 20:
+      x = self.a
+      self.a += 1
+      return x
+    else:
+      raise StopIteration
+ 
+myclass = MyNumbers()
+myiter = iter(myclass)
+ 
+for x in myiter:
+  print(x)
+
+生成器
+使用了 yield 的函数被称为生成器
+生成器函数是一种特殊的函数，可以在迭代过程中逐步产生值，而不是一次性返回所有结果。
+
+def countdown(n):
+    while n > 0:
+        yield n
+        n -= 1
+ 
+# 创建生成器对象
+generator = countdown(5)
+ 
+# 通过迭代生成器获取值
+print(next(generator))  # 输出: 5
+print(next(generator))  # 输出: 4
+print(next(generator))  # 输出: 3
+ 
+# 使用 for 循环迭代生成器
+for value in generator:
+    print(value)  # 输出: 2 1
+
+
+函数
+函数是组织好的代码段
+定义函数
+def function():
+"""
+说明
+"""
+	code
+	return None
+圆括号之间可以用于定义参数
+第一行语句可以存放函数说明
+return 返回值给调用方
+
+函数调用
+def print_txt(str):
+	print(str)
+	return
+print_txt('zhou')
+
+参数
+必需参数
+def print_txt(str):
+	print(str)
+	return
+print_txt('zhou')
+
+关键字参数
+def print_info(name,age):
+	print(name)
+	print(age)
+print_info(age=20,name='zhou')
+
+默认参数
+def print_info(name,age=20):
+	print(name)
+	print(age)
+print_info(name='zhou')
+
+不定长参数
+语法
+def functionname([formal_args], *var_args_tuple ):
+   "函数_文档字符串"
+   function_suite
+   return [expression]
+例
+# *元组 **字典
+def print_info(arg1,*vartuple):
+	print(arg1)
+	print(vartuple)
+print_info(1,2,3,4,5)
+
+匿名函数
+不再使用 def 语句这样标准的形式定义一个函数
+语法
+lambda [arg1 [,arg2,.....argn]]:expression
+例
+x = lambda a : a + 10
+print(x(5))
+
+
+数据结构（难度较大，可先跳过。）
+将列表当做堆栈
+stack = [1,2,3]
+stack.append(4)
+stack.pop()
+
+将列表当做队列
+>>> from collections import deque
+>>> queue = deque(["Eric", "John", "Michael"])
+>>> queue.append("Terry")           # Terry arrives
+>>> queue.append("Graham")          # Graham arrives
+>>> queue.popleft()                 # The first to arrive now leaves
+'Eric'
+>>> queue.popleft()                 # The second to arrive now leaves
+'John'
+>>> queue                           # Remaining queue in order of arrival
+deque(['Michael', 'Terry', 'Graham'])
+......
+
+
+模块
+把这些定义存放在文件中，为一些脚本或者交互式的解释器实例使用，这个文件被称为模块。
+
+import module # 导入模块
+from...import # 导入模块中某部分
+from...import * # 导入模块所有部分
+
+__name__属性
+如果我们想在模块被引入时，模块中的某一程序块不执行，我们可以用__name__属性来使该程序块仅在该模块自身运行时执行。
+if __name__ == '__main__':
+   print('程序自身在运行')
+else:
+   print('我来自另一模块')
+
+dir() #找到模块内定义的所有名称
+
+
+包
+包是一种管理 Python 模块命名空间的形式
+比如一个模块的名称是 A.B， 那么他表示一个包 A中的子模块 B 。
+
+一个包的结构案例
+sound/                          顶层包
+      __init__.py               初始化 sound 包
+      formats/                  文件格式转换子包
+              __init__.py
+              wavread.py
+              wavwrite.py
+              aiffread.py
+              aiffwrite.py
+              auread.py
+              auwrite.py
+              ...
+      effects/                  声音效果子包
+              __init__.py
+              echo.py
+              surround.py
+              reverse.py
+              ...
+      filters/                  filters 子包
+              __init__.py
+              equalizer.py
+              vocoder.py
+              karaoke.py
+              ...
+目录只有包含一个叫做 __init__.py 的文件才会被认作是一个包
+__init__.py
+
+
+输入输出
+输出美化
+str() #用户易读
+repr() #解释器易读
+
+读取键盘输入
+input() #等待用户输入
+
+读写文件
+open(filename, mode)
+r 只读 w写入 a追加
+例
+# 打开一个文件
+f = open("/tmp/foo.txt", "w")
+f.write( "Python 是一个非常好的语言。\n是的，的确非常好!!\n" )
+# 关闭打开的文件
+f.close()
+
+文件对象的方法
+f.read()
+f.readline() # 读取单独的一行
+f.readlines() # 读取所有行
+f.write()
+f.tell() # 返回文件对象当前所处的位置
+f.seek() # 改变文件指针当前的位置
+f.close()
+
+
+File的方法
+打开文件
+open(file, mode='r')
+
+file对象
+常用函数
+file.close()
+file.flush()
+file.read([size])
+file.readline([size]) # 读取整行
+file.readlines([sizeint]) # 读取所有行并返回列表
+file.write(str)
+file.writelines(sequence) # 向文件写入一个序列字符串列表
+
+Python3 OS 文件/目录方法（可先跳过）
+os 模块提供了非常丰富的方法用来处理文件和目录
+
+
+错误和异常
+语法错误
+>>> while True print('Hello world')
+  File "<stdin>", line 1, in ?
+    while True print('Hello world')
+                   ^
+SyntaxError: invalid syntax
+
+运行的时候，也有可能发生错误。
+>>> 10 * (1/0)             # 0 不能作为除数，触发异常
+Traceback (most recent call last):
+  File "<stdin>", line 1, in ?
+ZeroDivisionError: division by zero
+>>> 4 + spam*3             # spam 未定义，触发异常
+Traceback (most recent call last):
+  File "<stdin>", line 1, in ?
+NameError: name 'spam' is not defined
+>>> '2' + 2               # int 不能与 str 相加，触发异常
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: can only concatenate str (not "int") to str
+
+异常处理语句
+执行code1，若异常则执行code2，无任何异常则执行code3，一定会执行code4.
+try:
+	code1
+except:
+	code2
+else:
+	code3
+finally:
+	code4
+
+抛出异常
+使用 raise 语句抛出一个指定的异常
+raise [Exception [, args [, traceback]]]
+例
+# 如果 x 大于 5 就触发异常
+x = 10
+if x > 5:
+    raise Exception('x 不能大于 5。x 的值为: {}'.format(x))
+
+
+Python面向对象
+基本术语
+类 方法 类变量 数据成员 方法重写 局部变量 实例变量 继承 实例化 对象
+
+类
+定义
+class ClassName:
+    <statement-1>
+    .
+    .
+    .
+    <statement-N>
+
+类的基本运用
+例
+class MyClass:
+    i = 12345
+    def f(self):
+        return 'zhou'
+x = MyClass()
+print(x.i)
+print(x.f())
+
+ __init__()
+类有一个名为 __init__() 的特殊方法，类的实例化操作会自动调用 __init__() 方法。
+例
+class Complex:
+    def __init__(self, realpart, imagpart):
+        self.r = realpart
+        self.i = imagpart
+x = Complex(3.0, -4.5)
+print(x.r, x.i)   # 输出结果：3.0 -4.5
+
+self
+类的方法必须要有第一个参数名称
+例
+class Test:
+    def prt(self):
+        print(self)
+        print(self.__class__)
+t = Test()
+t.prt()
+
+类的方法
+例
+#类定义
+class people:
+    #定义基本属性
+    name = ''
+    age = 0
+    #定义私有属性,私有属性在类外部无法直接进行访问
+    __weight = 0
+    #定义构造方法
+    def __init__(self,n,a,w):
+        self.name = n
+        self.age = a
+        self.__weight = w
+    def speak(self):
+        print("%s 说: 我 %d 岁。" %(self.name,self.age))
+# 实例化类
+p = people('runoob',10,30)
+p.speak()
+
+继承
+Python支持类的继承
+class DerivedClassName(BaseClassName):
+    <statement-1>
+    .
+    .
+    .
+    <statement-N>
+例
+#类定义
+class people:
+    #定义基本属性
+    name = ''
+    age = 0
+    #定义私有属性,私有属性在类外部无法直接进行访问
+    __weight = 0
+    #定义构造方法
+    def __init__(self,n,a,w):
+        self.name = n
+        self.age = a
+        self.__weight = w
+    def speak(self):
+        print("%s 说: 我 %d 岁。" %(self.name,self.age))
+#单继承示例
+class student(people):
+    grade = ''
+    def __init__(self,n,a,w,g):
+        #调用父类的构函
+        people.__init__(self,n,a,w)
+        self.grade = g
+    #覆写父类的方法
+    def speak(self):
+        print("%s 说: 我 %d 岁了，我在读 %d 年级"%(self.name,self.age,self.grade))
+#使用类
+s = student('ken',10,60,3)
+s.speak()
+
+多继承
+class DerivedClassName(Base1, Base2, Base3):
+    <statement-1>
+    .
+    .
+    .
+    <statement-N>
+例
+#类定义
+class people:
+    #定义基本属性
+    name = ''
+    age = 0
+    #定义私有属性,私有属性在类外部无法直接进行访问
+    __weight = 0
+    #定义构造方法
+    def __init__(self,n,a,w):
+        self.name = n
+        self.age = a
+        self.__weight = w
+    def speak(self):
+        print("%s 说: 我 %d 岁。" %(self.name,self.age))
+ 
+#单继承示例
+class student(people):
+    grade = ''
+    def __init__(self,n,a,w,g):
+        #调用父类的构函
+        people.__init__(self,n,a,w)
+        self.grade = g
+    #覆写父类的方法
+    def speak(self):
+        print("%s 说: 我 %d 岁了，我在读 %d 年级"%(self.name,self.age,self.grade))
+ 
+#另一个类，多继承之前的准备
+class speaker():
+    topic = ''
+    name = ''
+    def __init__(self,n,t):
+        self.name = n
+        self.topic = t
+    def speak(self):
+        print("我叫 %s，我是一个演说家，我演讲的主题是 %s"%(self.name,self.topic))
+ 
+#多继承
+class sample(speaker,student):
+    a =''
+    def __init__(self,n,a,w,g,t):
+        student.__init__(self,n,a,w,g)
+        speaker.__init__(self,n,t)
+ 
+test = sample("Tim",25,80,4,"Python")
+test.speak()   #方法名同，默认调用的是在括号中参数位置排前父类的方法
+
+方法重写
+如果你的父类方法的功能不能满足你的需求，你可以在子类重写你父类的方法。
+例
+class Parent:        # 定义父类
+   def myMethod(self):
+      print ('调用父类方法')
+ 
+class Child(Parent): # 定义子类
+   def myMethod(self):
+      print ('调用子类方法')
+ 
+c = Child()          # 子类实例
+c.myMethod()         # 子类调用重写方法
+super(Child,c).myMethod() #用子类对象调用父类已被覆盖的方法
+
+类属性与方法
+类的私有属性实例
+class JustCounter:
+    __secretCount = 0  # 私有变量
+    publicCount = 0    # 公开变量
+ 
+    def count(self):
+        self.__secretCount += 1
+        self.publicCount += 1
+        print (self.__secretCount)
+ 
+counter = JustCounter()
+counter.count()
+counter.count()
+print (counter.publicCount)
+print (counter.__secretCount)  # 报错，实例不能访问私有变量
+
+类的私有方法实例
+class Site:
+    def __init__(self, name, url):
+        self.name = name       # public
+        self.__url = url   # private
+ 
+    def who(self):
+        print('name  : ', self.name)
+        print('url : ', self.__url)
+ 
+    def __foo(self):          # 私有方法
+        print('这是私有方法')
+ 
+    def foo(self):            # 公共方法
+        print('这是公共方法')
+        self.__foo()
+ 
+x = Site('菜鸟教程', 'www.runoob.com')
+x.who()        # 正常输出
+x.foo()        # 正常输出
+x.__foo()      # 报错
+
+运算符重载
+可以对类的专有方法进行重载
+例
+class Vector:
+   def __init__(self, a, b):
+      self.a = a
+      self.b = b
+ 
+   def __str__(self):
+      return 'Vector (%d, %d)' % (self.a, self.b)
+   
+   def __add__(self,other):
+      return Vector(self.a + other.a, self.b + other.b)
+ 
+v1 = Vector(2,10)
+v2 = Vector(5,-2)
+print (v1 + v2)
+
+
+命名空间和作用域
+命名空间提供了在项目中避免名字冲突的一种方法
+内置名称
+全局名称
+局部名称
+
+作用域就是一个 Python 程序可以直接访问命名空间的正文区域
+全局变量和局部变量
+global 在局部作用域声明为全局变量
+nonlocal 修改嵌套作用域中的变量
+
+
+标准库
+os 提供了许多与操作系统交互的函数
+sys 提供了与 Python 解释器和系统相关的功能
+time 提供了处理时间的函数
+datetime 提供了更高级的日期和时间处理函数
+random 提供了生成随机数的函数
+math 提供了数学函数，例如三角函数、对数函数、指数函数、常数等
+re 提供了正则表达式处理函数
+json json 模块提供了 JSON 编码和解码函数
+urllib urllib 模块提供了访问网页和处理 URL 的功能
+
+
+
+---=零散笔记=---
+
+
+# 方法一：使用命令行
+import os
+
+# 确定要运行的.py文件的路径
+file_path = os.path.join(os.getcwd(), "filename.py")
+
+# 使用命令行运行.py文件
+os.system(f"python {file_path}")
+
+# 方法二：导入模块
+import filename
+
+# 调用模块中的函数
+filename.function_name()
+
+# 方法三：使用subprocess模块
+import subprocess
+
+# 执行系统命令运行.py文件
+subprocess.run(["python", "filename.py"])
+
+
+---===---
+
+
+
+练习实例
+
+判断输入内容的类型
+def check_x(s):
+    try:
+        float(s)
+        print('type number')
+        return True
+    except ValueError:
+        pass
+
+    try:
+        str(s)
+        print('type text')
+        return True
+    except ValueError:
+        pass
+    print("check_x done")
+    return None
+
+x = input('输入内容')
+print(check_x(x))
+
+输出指定范围素数
+lower = int(input('min'))
+upper = int(input('max'))
+for num in range(lower,upper):
+    if num > 1:
+        for i in range(2,num):
+            if (num % i) == 0:
+                break
+        else:
+            print(num)
+
+
+阶乘
+# 获取用户输入的数字
+num = int(input("请输入一个数字: "))
+factorial = 1
+ 
+# 查看数字是负数，0 或 正数
+if num < 0:
+   print("抱歉，负数没有阶乘")
+elif num == 0:
+   print("0 的阶乘为 1")
+else:
+   for i in range(1,num + 1):
+       factorial = factorial*i
+   print("%d 的阶乘为 %d" %(num,factorial))
+
+
+九九乘法表
+for i in range(1,10):
+    for j in range(1,i+1):
+        print(f'{j}x{i}={j*i}',end=" ")
+    print('\n')
+
+
+斐波那契数列
+0 1 1 2 3 5 8 13
+n1 = 0
+n2 = 1
+begin_num = 2
+range_num = int(input())
+print(n1)
+print(n2)
+while range_num > begin_num:
+    x = n1 + n2
+    print(x)
+    n1 = n2
+    n2 = x
+    begin_num += 1
+

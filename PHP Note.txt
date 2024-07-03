@@ -1,0 +1,1065 @@
+PHP是一种创建动态交互性站点的强有力的服务器端脚本语言
+至少需要先了解的语言 HTML CSS
+
+
+简介
+一种通用开源脚本语言，脚本在服务器上执行，完毕后返回HTML结果到浏览器。
+.php 文件扩展名
+
+重要功能
+生成动态页面内容
+管理服务器上的文件
+收集表单数据
+发送和接收 cookies
+管理数据库
+限制用户访问网站
+加密数据
+
+
+PHP环境配置
+服务器Web主机安装
+个人电脑安装
+
+
+语法
+PHP 文件通常包含 HTML 标签和一些 PHP 脚本代码
+<?php
+// PHP 代码
+?>
+例
+<!DOCTYPE html>
+<html>
+<body>
+<?php
+echo "Hello World!";
+?>
+</body>
+</html>
+
+注释
+// /**/
+
+
+变量
+定义变量
+$变量
+例
+<?php
+$txt="Hello world!";
+$x=5;
+$y=10.5;
+?>
+PHP是一门弱类型语言，无需声明。
+
+作用域
+global 函数内访问全局变量
+static 保留局部变量
+参数作用域
+例
+<?php
+function myTest($x)
+{
+    echo $x;
+}
+myTest(5);
+?>
+
+
+echo语句和print语句
+echo
+输出多个字符串
+例
+<?php
+$txt1="学习 PHP";
+$txt2="RUNOOB.COM";
+$cars=array("Volvo","BMW","Toyota");
+ 
+echo $txt1;
+echo "<br>";
+echo "在 $txt2 学习 PHP ";
+echo "<br>";
+echo "我车的品牌是 {$cars[0]}";
+?>
+
+print
+输出一个字符串
+例
+<?php
+$txt1="学习 PHP";
+$txt2="RUNOOB.COM";
+$cars=array("Volvo","BMW","Toyota");
+ 
+print $txt1;
+print "<br>";
+print "在 $txt2 学习 PHP ";
+print "<br>";
+print "我车的品牌是 {$cars[0]}";
+?>
+
+
+PHP EOF
+在终端中定义字符串的方法
+例
+<?php
+echo <<<EOF
+        <h1>我的第一个标题</h1>
+        <p>我的第一个段落。</p>
+EOF;
+// 结束需要独立一行且前后不能空格
+?>
+例
+<?php
+$name="runoob";
+$a= <<<EOF
+        "abc"$name
+        "123"
+EOF;
+// 结束需要独立一行且前后不能空格
+echo $a;
+?>
+
+
+数据类型
+字符串 整数型 浮点型 布尔型 数组 对象 空值 资源类型
+
+var_dump() 返回变量的数据类型和值
+
+整数型
+$x = 1
+
+浮点型
+$x = 1.0
+
+布尔型
+$x = true
+
+数组
+$pc = array("xiaomi","huawei")
+
+对象
+必须使用class关键字声明类对象
+例
+<?php
+class Car
+{
+  var $color;
+  function __construct($color="green") {
+    $this->color = $color;
+  }
+  function what_color() {
+    return $this->color;
+  }
+}
+?>
+
+空值
+$x = null
+
+资源类型
+get_resource_type() 返回资源类型
+
+
+类型比较
+== 松散比较 值相等即可
+=== 严格比较 值和类型都要相等
+
+
+常量
+该值在脚本中不能改变
+语法
+bool define ( string $name , mixed $value [, bool $case_insensitive = false ] )
+例
+<?php
+// 区分大小写的常量名
+define("GREETING", "欢迎访问 Runoob.com");
+echo GREETING;    // 输出 "欢迎访问 Runoob.com"
+echo '<br>';
+echo greeting;   // 输出 "greeting"，但是有警告信息，表示该常量未定义
+?>
+<?php
+// 不区分大小写的常量名
+define("GREETING", "欢迎访问 Runoob.com", true);
+echo greeting;  // 输出 "欢迎访问 Runoob.com"
+?>
+
+
+字符串变量
+定义字符串
+<?php
+$txt="Hello world!";
+echo $txt;
+?>
+
+并置运算符
+<?php
+$txt1="Hello world!";
+$txt2="What a nice day!";
+echo $txt1 . " " . $txt2;
+?>
+
+strlen() 函数
+返回字符串的长度
+<?php
+echo strlen("Hello world!");
+?>
+
+strpos() 函数
+在字符串内查找一个字符或一段指定的文本
+<?php
+echo strpos("Hello world!","world");
+?>
+
+
+运算符
+算术
+= 赋值
++ 相加
++ - * / %
+-x 负数
+~x 取反
+a.b 连接字符串
+
+赋值
+= += -= *= /= %= a.=b
+
+递增递减
+++x x++ --x x--
+
+比较
+== === != <>不等于 !==绝对不等于 > < >= <=
+
+逻辑
+and or xor &&与 ||或 !非
+
+三元运算符
+(expr1) ? (expr2) : (expr3) 
+
+组合比较符
+$c = $a <=> $b;
+如果 $a > $b, 则 $c 的值为 1。
+如果 $a == $b, 则 $c 的值为 0。
+如果 $a < $b, 则 $c 的值为 -1。
+
+注意优先级
+
+
+判断
+例
+if (条件)
+{
+    if 条件成立时执行的代码;
+}
+elseif (条件)
+{
+    elseif 条件成立时执行的代码;
+}
+else
+{
+    条件不成立时执行的代码;
+}
+例
+<?php
+switch (n)
+{
+case label1:
+    如果 n=label1，此处代码将执行;
+    break;
+case label2:
+    如果 n=label2，此处代码将执行;
+    break;
+default:
+    如果 n 既不等于 label1 也不等于 label2，此处代码将执行;
+}
+?>
+
+
+数组
+能在单个变量中存储多个值的特殊变量
+array();
+例
+$cars=array("Volvo","BMW","Toyota"); //自动分配ID键
+$cars[0]="Volvo";
+$cars[1]="BMW";
+$cars[2]="Toyota"; //人工分配ID键
+
+count() 函数
+获取数组的长度
+
+遍历数值数组
+例
+<?php
+$cars=array("Volvo","BMW","Toyota");
+$arrlength=count($cars);
+ 
+for($x=0;$x<$arrlength;$x++)
+{
+    echo $cars[$x];
+    echo "<br>";
+}
+?>
+
+关联数组
+例
+<?php
+$age=array("Peter"=>"35","Ben"=>"37","Joe"=>"43");
+echo "Peter is " . $age['Peter'] . " years old.";
+?>
+
+遍历关联数组
+例
+<?php
+$age=array("Peter"=>"35","Ben"=>"37","Joe"=>"43");
+ 
+foreach($age as $x=>$x_value)
+{
+    echo "Key=" . $x . ", Value=" . $x_value;
+    echo "<br>";
+}
+?>
+
+
+数组排序
+升序
+<?php
+$cars=array("Volvo","BMW","Toyota");
+sort($cars);
+?>
+
+降序
+<?php
+$cars=array("Volvo","BMW","Toyota");
+rsort($cars);
+?>
+
+根据数组的值升序
+<?php
+$age=array("Peter"=>"35","Ben"=>"37","Joe"=>"43");
+asort($age);
+?>
+
+根据数组的键升序
+<?php
+$age=array("Peter"=>"35","Ben"=>"37","Joe"=>"43");
+ksort($age);
+?>
+
+根据数组的值降序
+<?php
+$age=array("Peter"=>"35","Ben"=>"37","Joe"=>"43");
+arsort($age);
+?>
+
+根据数组的键降序
+<?php
+$age=array("Peter"=>"35","Ben"=>"37","Joe"=>"43");
+krsort($age);
+?>
+
+
+超级全局变量
+$GLOBALS
+一个超级全局变量组，在一个PHP脚本的全部作用域中都可以访问。
+<?php 
+$x = 75; 
+$y = 25;
+ 
+function addition() 
+{ 
+    $GLOBALS['z'] = $GLOBALS['x'] + $GLOBALS['y']; 
+}
+ 
+addition(); 
+echo $z; 
+?>
+
+$_SERVER
+一个包含了诸如头信息(header)、路径(path)、以及脚本位置(script locations)等等信息的数组
+<?php 
+echo $_SERVER['PHP_SELF'];
+echo "<br>";
+echo $_SERVER['SERVER_NAME'];
+echo "<br>";
+echo $_SERVER['HTTP_HOST'];
+echo "<br>";
+echo $_SERVER['HTTP_REFERER'];
+echo "<br>";
+echo $_SERVER['HTTP_USER_AGENT'];
+echo "<br>";
+echo $_SERVER['SCRIPT_NAME'];
+?>
+
+$_REQUEST
+用于收集HTML表单提交的数据
+<html>
+<body>
+ 
+<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+Name: <input type="text" name="fname">
+<input type="submit">
+</form>
+ 
+<?php 
+$name = $_REQUEST['fname']; 
+echo $name; 
+?>
+ 
+</body>
+</html>
+
+$_POST
+PHP $_POST 被广泛应用于收集表单数据，在HTML form标签的指定该属性："method="post"。
+<html>
+<body>
+ 
+<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+Name: <input type="text" name="fname">
+<input type="submit">
+</form>
+ 
+<?php 
+$name = $_POST['fname']; 
+echo $name; 
+?>
+ 
+</body>
+</html>
+
+$_GET
+PHP $_GET 同样被广泛应用于收集表单数据
+例
+假定我们有一个包含参数的超链接HTML页面：
+
+<html>
+<body>
+
+<a href="test_get.php?subject=PHP&web=runoob.com">Test $GET</a>
+
+</body>
+</html>
+当用户点击链接 "Test $GET", 参数 "subject" 和 "web" 将发送至"test_get.php",你可以在 "test_get.php" 文件中使用 $_GET 变量来获取这些数据。
+
+以下实例显示了 "test_get.php" 文件的代码:
+
+实例
+<html>
+<body>
+ 
+<?php 
+echo "Study " . $_GET['subject'] . " @ " . $_GET['web'];
+?>
+ 
+</body>
+</html>
+
+
+循环
+while语句
+while (条件)
+{
+    要执行的代码;
+}
+
+do...while语句
+do
+{
+    要执行的代码;
+}
+while (条件);
+
+for语句
+for (初始值; 条件; 增量)
+{
+    要执行的代码;
+}
+
+foreach语句
+foreach 循环用于遍历数组
+foreach ($array as $value)
+{
+    要执行代码;
+}
+例
+<?php
+$x=array("Google","Runoob","Taobao");
+foreach ($x as $value)
+{
+    echo $value . PHP_EOL;
+}
+?>
+
+
+函数
+定义函数
+<?php
+function functionName()
+{
+    // 要执行的代码
+}
+?>
+
+return语句
+返回函数的值
+
+变量函数
+将一个变量作为函数名来调用的函数
+例
+<?php
+function foo() {
+    echo "In foo()<br />\n";
+}
+
+function bar($arg = '')
+{
+    echo "In bar(); argument was '$arg'.<br />\n";
+}
+
+// 使用 echo 的包装函数
+function echoit($string)
+{
+    echo $string;
+}
+
+$func = 'foo';
+$func();        // 调用 foo()
+
+$func = 'bar';
+$func('test');  // 调用 bar()
+
+$func = 'echoit';
+$func('test');  // 调用 echoit()
+?>
+
+魔术常量
+PHP提供了大量的预定义常量
+
+__LINE__
+文件中的当前行号
+例
+<?php
+echo '这是第 " '  . __LINE__ . ' " 行';
+?>
+
+__DIR__
+文件所在的目录
+<?php
+echo '该文件位于 " '  . __DIR__ . ' " ';
+?>
+
+__FUNCTION__
+返回该函数被定义时的名字
+<?php
+function test() {
+    echo  '函数名为：' . __FUNCTION__ ;
+}
+test();
+?>
+
+__CLASS__
+返回该类被定义时的名字
+<?php
+class test {
+    function _print() {
+        echo '类名为：'  . __CLASS__ . "<br>";
+        echo  '函数名为：' . __FUNCTION__ ;
+    }
+}
+$t = new test();
+$t->_print();
+?>
+
+__TRAIT__
+例
+<?php
+class Base {
+    public function sayHello() {
+        echo 'Hello ';
+    }
+}
+ 
+trait SayWorld {
+    public function sayHello() {
+        parent::sayHello();
+        echo 'World!';
+    }
+}
+ 
+class MyHelloWorld extends Base {
+    use SayWorld;
+}
+ 
+$o = new MyHelloWorld();
+$o->sayHello();
+?>
+
+__METHOD__
+返回该方法被定义时的名字
+<?php
+function test() {
+    echo  '函数名为：' . __METHOD__ ;
+}
+test();
+?>
+
+__NAMESPACE__
+当前命名空间的名称
+<?php
+namespace MyProject;
+ 
+echo '命名空间为："', __NAMESPACE__, '"'; // 输出 "MyProject"
+?>
+
+
+命名空间（需要继续学习）
+PHP中不允许命名空间内两个函数或者类出现相同的名字
+定义命名空间
+<?php  
+// 定义代码在 'MyProject' 命名空间中  
+namespace MyProject;  
+ 
+// ... 代码 ...  
+?>
+例 不建议
+<?php  
+namespace MyProject;
+
+const CONNECT_OK = 1;
+class Connection { /* ... */ }
+function connect() { /* ... */  }
+
+namespace AnotherProject;
+
+const CONNECT_OK = 1;
+class Connection { /* ... */ }
+function connect() { /* ... */  }
+?>  
+
+例 建议使用此语法
+<?php
+namespace MyProject {
+    const CONNECT_OK = 1;
+    class Connection { /* ... */ }
+    function connect() { /* ... */  }
+}
+
+namespace AnotherProject {
+    const CONNECT_OK = 1;
+    class Connection { /* ... */ }
+    function connect() { /* ... */  }
+}
+?>
+
+子命名空间
+<?php
+namespace MyProject\Sub\Level;  //声明分层次的单个命名空间
+
+const CONNECT_OK = 1;
+class Connection { /* ... */ }
+function Connect() { /* ... */  }
+
+?>
+
+......
+
+
+面向对象（需要继续学习）
+一种编程思想和方法，它将程序中的数据和操作数据的方法封装在一起，形成"对象"，并通过对象之间的交互和消息传递来完成程序的功能。
+
+封装（Encapsulation）：指将对象的属性和方法封装在一起，使得外部无法直接访问和修改对象的内部状态。通过使用访问控制修饰符（public、private、protected）来限制属性和方法的访问权限，从而实现封装。
+
+继承（Inheritance）：指可以创建一个新的类，该类继承了父类的属性和方法，并且可以添加自己的属性和方法。通过继承，可以避免重复编写相似的代码，并且可以实现代码的重用。
+
+多态（Polymorphism）：指可以使用一个父类类型的变量来引用不同子类类型的对象，从而实现对不同对象的统一操作。多态可以使得代码更加灵活，具有更好的可扩展性和可维护性。在 PHP 中，多态可以通过实现接口（interface）和使用抽象类（abstract class）来实现。
+
+类定义
+<?php
+class phpClass {
+  var $var1;
+  var $var2 = "constant string";
+  
+  function myfunc ($arg1, $arg2) {
+     [..]
+  }
+  [..]
+}
+?>
+
+创建对象
+$runoob = new Site;
+$taobao = new Site;
+$google = new Site;
+
+调用成员方法
+// 调用成员函数，设置标题和URL
+$runoob->setTitle( "菜鸟教程" );
+$taobao->setTitle( "淘宝" );
+$google->setTitle( "Google 搜索" );
+
+$runoob->setUrl( 'www.runoob.com' );
+$taobao->setUrl( 'www.taobao.com' );
+$google->setUrl( 'www.google.com' );
+
+// 调用成员函数，获取标题和URL
+$runoob->getTitle();
+$taobao->getTitle();
+$google->getTitle();
+
+$runoob->getUrl();
+$taobao->getUrl();
+$google->getUrl();
+
+完整代码
+<?php
+class Site {
+  /* 成员变量 */
+  var $url;
+  var $title;
+  
+  /* 成员函数 */
+  function setUrl($par){
+     $this->url = $par;
+  }
+  
+  function getUrl(){
+     echo $this->url . PHP_EOL;
+  }
+  
+  function setTitle($par){
+     $this->title = $par;
+  }
+  
+  function getTitle(){
+     echo $this->title . PHP_EOL;
+  }
+}
+
+$runoob = new Site;
+$taobao = new Site;
+$google = new Site;
+
+// 调用成员函数，设置标题和URL
+$runoob->setTitle( "菜鸟教程" );
+$taobao->setTitle( "淘宝" );
+$google->setTitle( "Google 搜索" );
+
+$runoob->setUrl( 'www.runoob.com' );
+$taobao->setUrl( 'www.taobao.com' );
+$google->setUrl( 'www.google.com' );
+
+// 调用成员函数，获取标题和URL
+$runoob->getTitle();
+$taobao->getTitle();
+$google->getTitle();
+
+$runoob->getUrl();
+$taobao->getUrl();
+$google->getUrl();
+?>
+
+构造函数
+用来在创建对象时初始化对象， 即为对象成员变量赋初始值，在创建对象的语句中与 new 运算符一起使用。
+语法
+void __construct ([ mixed $args [, $... ]] )
+
+......
+
+
+
+
+PHP表单
+
+
+
+
+表单和用户输入
+PHP 中的 $_GET 和 $_POST 变量用于检索表单中的信息
+PHP 能把来自 HTML 页面中的表单元素自动变成可供 PHP 脚本使用
+
+PHP 表单处理
+这是一份HTML表单
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+</head>
+<body>
+ 
+<form action="welcome.php" method="post">
+名字: <input type="text" name="fname">
+年龄: <input type="text" name="age">
+<input type="submit" value="提交">
+</form>
+ 
+</body>
+</html>
+表单的数据会被送往名为 "welcome.php" 的 PHP 文件
+欢迎<?php echo $_POST["fname"]; ?>!<br>
+你的年龄是 <?php echo $_POST["age"]; ?>  岁。
+
+PHP 获取下拉菜单的数据
+PHP 下拉菜单单选
+php_form_select.php 文件代码
+<?php
+$q = isset($_GET['q'])? htmlspecialchars($_GET['q']) : '';
+if($q) {
+        if($q =='RUNOOB') {
+                echo '菜鸟教程<br>http://www.runoob.com';
+        } else if($q =='GOOGLE') {
+                echo 'Google 搜索<br>http://www.google.com';
+        } else if($q =='TAOBAO') {
+                echo '淘宝<br>http://www.taobao.com';
+        }
+} else {
+?>
+<form action="" method="get"> 
+    <select name="q">
+    <option value="">选择一个站点:</option>
+    <option value="RUNOOB">Runoob</option>
+    <option value="GOOGLE">Google</option>
+    <option value="TAOBAO">Taobao</option>
+    </select>
+    <input type="submit" value="提交">
+    </form>
+<?php
+}
+?>
+PHP 下拉菜单多选
+php_form_select_mul.php 文件代码
+<?php
+$q = isset($_POST['q'])? $_POST['q'] : '';
+if(is_array($q)) {
+    $sites = array(
+            'RUNOOB' => '菜鸟教程: http://www.runoob.com',
+            'GOOGLE' => 'Google 搜索: http://www.google.com',
+            'TAOBAO' => '淘宝: http://www.taobao.com',
+    );
+    foreach($q as $val) {
+        // PHP_EOL 为常量，用于换行
+        echo $sites[$val] . PHP_EOL;
+    }
+      
+} else {
+?>
+<form action="" method="post"> 
+    <select multiple="multiple" name="q[]">
+    <option value="">选择一个站点:</option>
+    <option value="RUNOOB">Runoob</option>
+    <option value="GOOGLE">Google</option>
+    <option value="TAOBAO">Taobao</option>
+    </select>
+    <input type="submit" value="提交">
+    </form>
+<?php
+}
+?>
+
+单选按钮表单
+php_form_radio.php 文件代码
+<?php
+$q = isset($_GET['q'])? htmlspecialchars($_GET['q']) : '';
+if($q) {
+        if($q =='RUNOOB') {
+                echo '菜鸟教程<br>http://www.runoob.com';
+        } else if($q =='GOOGLE') {
+                echo 'Google 搜索<br>http://www.google.com';
+        } else if($q =='TAOBAO') {
+                echo '淘宝<br>http://www.taobao.com';
+        }
+} else {
+?><form action="" method="get"> 
+    <input type="radio" name="q" value="RUNOOB" />Runoob
+    <input type="radio" name="q" value="GOOGLE" />Google
+    <input type="radio" name="q" value="TAOBAO" />Taobao
+    <input type="submit" value="提交">
+</form>
+<?php
+}
+?>
+
+checkbox 复选框
+php_form_select_checkbox.php 文件代码
+<?php
+$q = isset($_POST['q'])? $_POST['q'] : '';
+if(is_array($q)) {
+    $sites = array(
+            'RUNOOB' => '菜鸟教程: http://www.runoob.com',
+            'GOOGLE' => 'Google 搜索: http://www.google.com',
+            'TAOBAO' => '淘宝: http://www.taobao.com',
+    );
+    foreach($q as $val) {
+        // PHP_EOL 为常量，用于换行
+        echo $sites[$val] . PHP_EOL;
+    }
+      
+} else {
+?><form action="" method="post"> 
+    <input type="checkbox" name="q[]" value="RUNOOB"> Runoob<br> 
+    <input type="checkbox" name="q[]" value="GOOGLE"> Google<br> 
+    <input type="checkbox" name="q[]" value="TAOBAO"> Taobao<br>
+    <input type="submit" value="提交">
+</form>
+<?php
+}
+?>
+
+
+表单验证实例
+<!DOCTYPE HTML> 
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<style>
+.error {color: #FF0000;}
+</style>
+</head>
+<body> 
+
+<?php
+// 定义变量并默认设置为空值
+$nameErr = $emailErr = $genderErr = $websiteErr = "";
+$name = $email = $gender = $comment = $website = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST")
+{
+    if (empty($_POST["name"]))
+    {
+        $nameErr = "名字是必需的";
+    }
+    else
+    {
+        $name = test_input($_POST["name"]);
+        // 检测名字是否只包含字母跟空格
+        if (!preg_match("/^[a-zA-Z ]*$/",$name))
+        {
+            $nameErr = "只允许字母和空格"; 
+        }
+    }
+    
+    if (empty($_POST["email"]))
+    {
+      $emailErr = "邮箱是必需的";
+    }
+    else
+    {
+        $email = test_input($_POST["email"]);
+        // 检测邮箱是否合法
+        if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$email))
+        {
+            $emailErr = "非法邮箱格式"; 
+        }
+    }
+    
+    if (empty($_POST["website"]))
+    {
+        $website = "";
+    }
+    else
+    {
+        $website = test_input($_POST["website"]);
+        // 检测 URL 地址是否合法
+        if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website))
+        {
+            $websiteErr = "非法的 URL 的地址"; 
+        }
+    }
+    
+    if (empty($_POST["comment"]))
+    {
+        $comment = "";
+    }
+    else
+    {
+        $comment = test_input($_POST["comment"]);
+    }
+    
+    if (empty($_POST["gender"]))
+    {
+        $genderErr = "性别是必需的";
+    }
+    else
+    {
+        $gender = test_input($_POST["gender"]);
+    }
+}
+
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+?>
+
+<h2>PHP 表单验证实例</h2>
+<p><span class="error">* 必需字段。</span></p>
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
+   名字: <input type="text" name="name" value="<?php echo $name;?>">
+   <span class="error">* <?php echo $nameErr;?></span>
+   <br><br>
+   E-mail: <input type="text" name="email" value="<?php echo $email;?>">
+   <span class="error">* <?php echo $emailErr;?></span>
+   <br><br>
+   网址: <input type="text" name="website" value="<?php echo $website;?>">
+   <span class="error"><?php echo $websiteErr;?></span>
+   <br><br>
+   备注: <textarea name="comment" rows="5" cols="40"><?php echo $comment;?></textarea>
+   <br><br>
+   性别:
+   <input type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?>  value="female">女
+   <input type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?>  value="male">男
+   <span class="error">* <?php echo $genderErr;?></span>
+   <br><br>
+   <input type="submit" name="submit" value="Submit"> 
+</form>
+
+<?php
+echo "<h2>您输入的内容是:</h2>";
+echo $name;
+echo "<br>";
+echo $email;
+echo "<br>";
+echo $website;
+echo "<br>";
+echo $comment;
+echo "<br>";
+echo $gender;
+?>
+
+</body>
+</html>
+
+
+
+
+使用PHP建立动态网站
+
+文件
+fopen() 函数用于在 PHP 中打开文件
+<html>
+<body>
+<?php
+$file=fopen("welcome.txt","r");
+?>
+</body>
+</html>
+
+如果 fopen() 函数不能打开指定的文件，下面的实例会生成一段消息。
+<html>
+<body>
+<?php
+$file=fopen("welcome.txt","r") or exit("Unable to open file!");
+?>
+</body>
+</html>
+
+关闭文件
+<?php
+$file = fopen("test.txt","r");
+//执行一些代码
+fclose($file);
+?>
+......
+
+
+上传文件

@@ -1,0 +1,84 @@
+JSON是存储和交换文本信息的语法
+C/C++ Python Java 均支持JSON
+
+
+简介
+特征
+JSON是易读的纯文本，可通过 JavaScript 进行解析，使用 AJAX 进行传输。
+
+
+语法
+JSON 语法是 JavaScript 对象表示语法的子集
+数据在名称/值对中
+数据由逗号 , 分隔
+使用斜杆 \ 来转义字符
+大括号 {} 保存对象
+中括号 [] 保存数组，数组可以包含多个对象
+
+数据书写格式
+key : value
+例
+"name" : "zhou"
+
+JSON值
+数字
+{ "age":30 }
+对象
+{ "name":"菜鸟教程" , "url":"www.runoob.com" }
+数组
+[
+    { key1 : value1-1 , key2:value1-2 }, 
+    { key1 : value2-1 , key2:value2-2 }, 
+    { key1 : value3-1 , key2:value3-2 }, 
+    ...
+    { key1 : valueN-1 , key2:valueN-2 }, 
+]
+布尔值
+{ "flag":true }
+空值
+{ "runoob":null }
+
+.json JSON文件后缀
+
+
+JSON对象
+访问对象值
+例
+var myObj, x;
+myObj = { "name":"runoob", "alexa":10000, "site":null };
+x = myObj.name
+x = myObj["name"];
+
+循环对象
+例 使用 for-in 来循环对象的属性
+var myObj = { "name":"runoob", "alexa":10000, "site":null };
+for (x in myObj) {
+    document.getElementById("demo").innerHTML += x + "<br>";
+}
+例 使用中括号（[]）来访问属性的值
+var myObj = { "name":"runoob", "alexa":10000, "site":null };
+for (x in myObj) {
+    document.getElementById("demo").innerHTML += myObj[x] + "<br>";
+}
+
+嵌套 JSON 对象
+例
+myObj = {
+    "name":"runoob",
+    "alexa":10000,
+    "sites": {
+        "site1":"www.runoob.com",
+        "site2":"m.runoob.com",
+        "site3":"c.runoob.com"
+    }
+}
+可以使用点号 . 或者中括号 [...] 来访问嵌套的 JSON 对象
+x = myObj.sites.site1;
+x = myObj.sites["site1"];
+
+修改值
+myObj.sites.site1 = "www.google.com";
+myObj.sites["site1"] = "www.google.com";
+
+删除对象属性
+delete myObj.sites["site1"]

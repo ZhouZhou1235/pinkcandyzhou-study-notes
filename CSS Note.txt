@@ -1,0 +1,1101 @@
+CSS (Cascading Style Sheets，层叠样式表），是一种用来为结构化文档（如 HTML 文档或 XML 应用）添加样式（字体、间距和颜色等）的计算机语言，CSS 文件扩展名为 .css。
+
+一个实例
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<style>
+body {
+	background-color:#d0e4fe;
+}
+h1 {
+	color:orange;
+	text-align:center;
+}
+p {
+	font-family:"Times New Roman";
+	font-size:20px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>CSS 实例!</h1>
+<p>这是一个段落。</p>
+
+</body>
+</html>
+
+CSS的作用
+样式表定义如何显示 HTML 元素，就像 HTML 中的字体标签和颜色属性所起的作用那样。样式通常保存在外部的 .css 文件中。我们只需要编辑一个简单的 CSS 文档就可以改变所有页面的布局和外观。
+
+CSS语法
+实例1
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<style>
+body {background-color:yellow;}
+h1   {font-size:36pt;}
+h2   {color:blue;}
+p    {margin-left:50px;}
+</style>
+</head>
+
+<body>
+
+<h1>这个标题设置的大小为 36 pt</h1>
+<h2>这个标题设置的颜色为蓝色：blue</h2>
+
+<p>这个段落的左外边距为 50 像素：50px</p> 
+
+</body>
+</html>
+
+实例2
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<style>
+body {background-color:tan;}
+h1   {color:maroon;font-size:20pt;}
+hr   {color:navy;}
+p    {font-size:11pt;margin-left:15px;}
+a:link    {color:green;}
+a:visited {color:yellow;}
+a:hover   {color:black;}
+a:active  {color:blue;}
+</style>
+</head>
+
+<body>
+
+<h1>这是标题</h1>
+<hr>
+
+<p>你可以看到这个段落是
+被设定的 CSS 渲染的。</p>
+
+<p><a href="https://www.runoob.com" 
+target="_blank">这是一个链接</a></p>
+
+</body>
+</html>
+
+语法
+CSS声明总是以分号 ; 结束，声明总以大括号 {} 括起来:
+p {color:red;text-align:center;}
+
+p
+{
+    color:red;
+    text-align:center;
+}
+这样可读性更强
+
+/*注释*/
+
+id 和 class 选择器
+id 选择器可以为标有特定 id 的 HTML 元素指定特定的样式
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+#para1
+{
+	text-align:center;
+	color:red;
+} 
+</style>
+</head>
+
+<body>
+<p id="para1">Hello World!</p>
+<p>这个段落不受该样式的影响。</p>
+</body>
+</html>
+
+class 选择器用于描述一组元素的样式，class 选择器有别于id选择器，class可以在多个元素中使用。
+class 选择器在 HTML 中以 class 属性表示, 在 CSS 中，类选择器以一个点 . 号显示
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+p.center
+{
+	text-align:center;
+}
+</style>
+</head>
+
+<body>
+<h1 class="center">这个标题不受影响</h1>
+<p class="center">这个段落居中对齐。</p> 
+</body>
+</html>
+
+
+创建CSS样式表
+
+插入样式表的方法有三种:
+外部样式表(External style sheet)
+内部样式表(Internal style sheet)
+内联样式(Inline style)
+
+外部样式表
+当样式需要应用于很多页面时，外部样式表将是理想的选择。在使用外部样式表的情况下，你可以通过改变一个文件来改变整个站点的外观。每个页面使用 <link> 标签链接到样式表。
+
+<head>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+
+这是一个外部样式表
+CSS test1.css
+hr {color:sienna;}
+p {margin-left:20px;}
+body {background-image:url("/images/back40.gif");}
+
+内部样式表
+当单个文档需要特殊的样式时，就应该使用内部样式表。你可以使用 <style> 标签在文档头部定义内部样式表。
+
+这是一个内部样式表
+<head>
+<style>
+hr {color:sienna;}
+p {margin-left:20px;}
+body {background-image:url("images/back40.gif");}
+</style>
+</head>
+
+内联样式
+当样式仅需要在一个元素上应用一次时可使用内联样式
+
+<p style="color:sienna;margin-left:20px">这是一个段落。</p>
+
+多重样式：内联样式会取代外部样式
+（内联样式）Inline style > （内部样式）Internal style sheet >（外部样式）External style sheet > 浏览器默认样式
+
+
+CSS背景
+body {background-color:#b0c4de;}
+body {background-image:url('paper.gif');}
+图像只在水平方向平铺 background-repeat:repeat-x
+图像不平铺 background-repeat:no-repeat
+改变图像位置 background-position:right top
+
+多个属性可以合并到一个属性
+body {background:#ffffff url('img_tree.png') no-repeat right top;}
+合并时注意顺序
+background-color
+background-image
+background-repeat
+background-attachment
+background-position
+
+
+CSS文本格式
+文本颜色 h1 {color:#00ff00;}
+文本的对齐方式 h1 {text-align:justify;}
+删除链接下划线 a {text-decoration:none;}
+文本划线
+h1 {text-decoration:overline;}
+h2 {text-decoration:line-through;}
+h3 {text-decoration:underline;}
+首行缩进 p {text-indent:50px;}
+
+
+CSS字体
+在CSS中，有两种类型的字体系列名称：
+通用字体系列 - 拥有相似外观的字体系统组合（如 "Serif" 或 "Monospace"）
+特定字体系列 - 一个特定的字体系列（如 "Times" 或 "Courier"）
+
+字体系列
+font-family 属性设置文本的字体系列。如果浏览器不支持第一种字体，他将尝试下一种字体。
+p{font-family:"Times New Roman", Times, serif;}
+
+字体样式
+主要是用于指定斜体文字的字体样式属性
+这个属性有三个值：
+正常 - 正常显示文本
+斜体 - 以斜体字显示的文字
+倾斜的文字 - 文字向一边倾斜
+p.normal {font-style:normal;}
+p.italic {font-style:italic;}
+p.oblique {font-style:oblique;}
+
+字体大小
+font-size 属性设置文本的大小
+设置字体大小像素
+h1 {font-size:40px;}
+h2 {font-size:30px;}
+p {font-size:14px;}
+px/16=em
+h1 {font-size:2.5em;} /* 40px/16=2.5em */
+h2 {font-size:1.875em;} /* 30px/16=1.875em */
+p {font-size:0.875em;} /* 14px/16=0.875em */
+使用百分比和EM组合
+body {font-size:100%;}
+h1 {font-size:2.5em;}
+h2 {font-size:1.875em;}
+p {font-size:0.875em;}
+
+
+CSS链接
+链接样式
+链接的样式，可以用任何CSS属性（如颜色，字体，背景等）。
+四个链接状态
+a:link {color:#000000;}      /* 未访问链接*/
+a:visited {color:#00FF00;}  /* 已访问链接 */
+a:hover {color:#FF00FF;}  /* 鼠标移动到链接上 */
+a:active {color:#0000FF;}  /* 鼠标点击时 */
+文本修饰
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:hover {text-decoration:underline;}
+a:active {text-decoration:underline;}
+背景颜色
+a:link {background-color:#B2FF99;}
+a:visited {background-color:#FFFF85;}
+a:hover {background-color:#FF704D;}
+a:active {background-color:#FF704D;}
+
+
+CSS列表
+ul无序列表 ol有序刘表
+ul.a {list-style-type:circle;}
+ul.b {list-style-type:square;}
+ol.c {list-style-type:upper-roman;}
+ol.d {list-style-type:lower-alpha;}
+指定列表项标记的图像
+ul {list-style-image:url();}
+属性可以简写
+ul {list-style: square url();}
+移除默认设置
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+CSS表格
+表格边框
+table, th, td
+{
+    border: 1px solid black;
+}
+
+折叠边框
+border-collapse 属性设置表格的边框是否被折叠成一个单一的边框或隔开
+table {border-collapse:collapse;}
+
+表格宽度和高度
+table {width:100%;}
+th {height:50px;}
+
+表格文字对齐
+td
+{
+    align:right;
+    height:50px;
+    vertical-align:bottom;
+}
+
+表格填充
+td
+{
+    padding:15px;
+}
+
+表格颜色
+table, td, th
+{
+    border:1px solid green;
+}
+th
+{
+    background-color:green;
+    color:white;
+}
+
+
+CSS盒子模型
+CSS盒模型本质上是一个盒子，封装周围的HTML元素，它包括：边距，边框，填充，和实际内容。
+Margin(外边距) - 清除边框外的区域，外边距是透明的。
+Border(边框) - 围绕在内边距和内容外的边框。
+Padding(内边距) - 清除内容周围的区域，内边距是透明的。
+Content(内容) - 盒子的内容，显示文本和图像。
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title>
+<style>
+div {
+    background-color: lightgrey;
+    width: 300px;
+    border: 25px solid green;
+    padding: 25px;
+    margin: 25px;
+}
+</style>
+</head>
+<body>
+
+<h2>盒子模型演示</h2>
+
+<p>CSS盒模型本质上是一个盒子，封装周围的HTML元素，它包括：边距，边框，填充，和实际内容。</p>
+
+<div>这里是盒子内的实际内容。有 25px 内间距，25px 外间距、25px 绿色边框。</div>
+
+</body>
+</html>
+
+
+CSS边框
+
+p.none {border-style:;}
+none: 默认无边框
+dotted: 定义一个点线边框
+dashed: 定义一个虚线边框
+solid: 定义实线边框
+double: 定义两个边框。 两个边框的宽度和 border-width 的值相同
+groove: 定义3D沟槽边框。效果取决于边框的颜色值
+ridge: 定义3D脊边框。效果取决于边框的颜色值
+inset:定义一个3D的嵌入边框。效果取决于边框的颜色值
+outset: 定义一个3D突出边框。 效果取决于边框的颜色值
+
+边框宽度
+border-width:5px
+
+边框颜色
+border-color:red
+
+
+CSS轮廓
+轮廓（outline）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用。
+
+outline:green dotted thick
+
+p {border:1px solid red;}
+p.dotted {outline-style:dotted;}
+p.dashed {outline-style:dashed;}
+p.solid {outline-style:solid;}
+p.double {outline-style:double;}
+p.groove {outline-style:groove;}
+p.ridge {outline-style:ridge;}
+p.inset {outline-style:inset;}
+p.outset {outline-style:outset;}
+点线轮廓
+虚线轮廓
+实线轮廓
+双线轮廓
+凹槽轮廓
+垄状轮廓
+嵌入轮廓
+外凸轮廓
+
+
+CSS margin 外边距
+margin 清除周围的（外边框）元素区域。margin 没有背景颜色，是完全透明的。
+
+p.margin
+{
+	margin-top:100px;
+	margin-bottom:100px;
+	margin-right:50px;
+	margin-left:50px;
+}
+
+允许简写
+margin:100px 50px;
+
+
+CSSpadding 填充
+
+p.padding
+{
+	padding-top:25px;
+	padding-bottom:25px;
+	padding-right:50px;
+	padding-left:50px;
+}
+
+允许简写
+padding:25px 50px;
+
+
+CSS分组和嵌套选择器
+h1 {
+    color:green;
+}
+h2 {
+    color:green;
+}
+p {
+    color:green;
+}
+
+可以分组
+h1,h2,p
+{
+    color:green;
+}
+
+嵌套选择器：进行不同部分的选择
+p{ }: 为所有 p 元素指定一个样式。
+.marked{ }: 为所有 class="marked" 的元素指定一个样式。
+.marked p{ }: 为所有 class="marked" 元素内的 p 元素指定一个样式。
+p.marked{ }: 为所有 class="marked" 的 p 元素指定一个样式。
+
+
+CSS尺寸
+
+
+CSS显示
+隐藏元素
+p.hidden {visibility:hidden;}
+p.hidden {display:none;}
+
+块和内联元素
+块元素是一个元素，占用了全部宽度，在前后都是换行符。
+<h1> <p> <div> 属于块
+内联元素只需要必要的宽度，不强制换行。
+<span> <a> 属于内联元素
+
+
+CSS定位
+position 属性指定了元素的定位类型。
+
+static
+relative
+fixed
+absolute
+sticky
+
+static
+HTML 元素的默认值，即没有定位，遵循正常的文档流对象。
+
+fixed
+元素的位置相对于浏览器窗口是固定位置。
+p.pos_fixed
+{
+	position:fixed;
+	top:30px;
+	right:5px;
+}
+
+relative
+相对定位元素的定位是相对其正常位置。
+h2.pos_left
+{
+    position:relative;
+    left:-20px;
+}
+
+absolute
+绝对定位的元素的位置相对于最近的已定位父元素，如果元素没有已定位的父元素，那么它的位置相对于<html>
+h2
+{
+    position:absolute;
+    left:100px;
+    top:150px;
+}
+
+sticky
+粘性定位的元素是依赖于用户的滚动，在 position:relative 与 position:fixed 定位之间切换。
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 5px;
+  background-color: #cae8ca;
+  border: 2px solid #4CAF50;
+}
+
+元素可以重叠
+img
+{
+    position:absolute;
+    left:0px;
+    top:0px;
+    z-index:-1;
+}
+
+
+溢出overflow
+overflow: scroll; 上下滚动
+overflow: visible; 溢出
+overflow: hidden; 隐藏
+
+
+浮动float
+元素左右相邻
+float: left;
+float: right;
+clear: both; 清除浮动
+
+
+对齐
+div
+margin: auto;
+
+文本
+text-align: center;
+
+使用定位方式的对齐
+position: absolute;
+right: 0px;
+
+使用浮动方式的对齐
+float: right;
+
+垂直居中
+padding: 100% 0;
+
+或
+.center { 
+    height: 200px;
+    position: relative;
+    border: 3px solid green; 
+}
+ 
+.center p {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+选择器的组合选择符
+
+后代选择
+div p {}
+
+子元素
+div>p {}
+
+相邻元素
+div+p {}
+
+后续元素
+div~p {}
+
+
+伪类
+添加选择器的特殊效果
+语法
+selector:pseudo-class {property:value;}
+
+例 设置超链接颜色
+a:link {color:#FF0000;} /* 未访问的链接 */
+a:visited {color:#00FF00;} /* 已访问的链接 */
+a:hover {color:#FF00FF;} /* 鼠标划过链接 */
+a:active {color:#0000FF;} /* 已选中的链接 */
+
+例设置第一个p元素
+p:first-child
+{
+	color:blue;
+} 
+
+
+伪元素
+添加选择器的特殊效果
+语法
+selector:pseudo-element {property:value;}
+
+例 设置首行
+p:first-line 
+{
+    color:#ff0000;
+    font-variant:small-caps;
+}
+
+例 设置首字
+p:first-letter 
+{
+    color:#ff0000;
+    font-size:xx-large;
+}
+
+例 在元素前后插入内容
+h1:before 
+{
+    content:url(smiley.gif);
+}
+h1:after
+{
+    content:url(smiley.gif);
+}
+
+
+导航栏
+例 垂直
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<style>
+body {
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a class="active" href="#home">主页</a></li>
+  <li><a href="#news">新闻</a></li>
+  <li><a href="#contact">联系</a></li>
+  <li><a href="#about">关于</a></li>
+</ul>
+
+<div style="margin-left:25%;padding:1px 16px;height:1000px;">
+  <h2>Fixed Full-height Side Nav</h2>
+  <h3>Try to scroll this area, and see how the sidenav sticks to the page</h3>
+  <p>Notice that this div element has a left margin of 25%. This is because the side navigation is set to 25% width. If you remove the margin, the sidenav will overlay/sit on top of this div.</p>
+  <p>Also notice that we have set overflow:auto to sidenav. This will add a scrollbar when the sidenav is too long (for example if it has over 50 links inside of it).</p>
+  <p>Some text..</p>
+  <p>Some text..</p>
+  <p>Some text..</p>
+  <p>Some text..</p>
+  <p>Some text..</p>
+  <p>Some text..</p>
+  <p>Some text..</p>
+</div>
+
+</body>
+</html>
+
+例 水平
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a class="active" href="#home">主页</a></li>
+  <li><a href="#news">新闻</a></li>
+  <li><a href="#contact">联系</a></li>
+  <li><a href="#about">关于</a></li>
+</ul>
+
+</body>
+</html>
+
+
+下拉菜单
+鼠标移动上去后显示下拉菜单
+例
+<!DOCTYPE html>
+<html>
+<head>
+<title>下拉菜单实例|菜鸟教程(runoob.com)</title>
+<meta charset="utf-8">
+<style>
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+</style>
+</head>
+<body>
+
+<h2>下拉菜单</h2>
+<p>鼠标移动到按钮上打开下拉菜单。</p>
+
+<div class="dropdown">
+  <button class="dropbtn">下拉菜单</button>
+  <div class="dropdown-content">
+    <a href="http://www.runoob.com">菜鸟教程 1</a>
+    <a href="http://www.runoob.com">菜鸟教程 2</a>
+    <a href="http://www.runoob.com">菜鸟教程 3</a>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+提示文本
+鼠标移到提示处显示提示内容
+.divTip {
+    position: relative;
+}
+.divTip .divtipContent {
+    position: absolute;
+    visibility: hidden;
+    background-color: red;
+}
+.divTip:hover .divtipContent {
+    visibility: visible;
+}
+
+
+媒体类型
+设置HTML在不同媒体上的呈现
+@media screen
+{
+    p.test {font-family:verdana,sans-serif;font-size:14px;}
+}
+@media print
+{
+    p.test {font-family:times,serif;font-size:10px;}
+}
+
+常用媒体类型
+all 所有
+handheld 手持设备（如手机）
+print 打印机
+screen 计算机屏幕
+tv 电视机
+
+
+属性选择器
+针对属性的CSS设置
+例
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title>  
+<style>
+input[type="text"]
+{
+	width:150px;
+	display:block;
+	margin-bottom:10px;
+	background-color:yellow;
+}
+input[type="button"]
+{
+	width:120px;
+	margin-left:35px;
+	display:block;
+}
+</style>
+</head>
+<body>
+
+<form name="input" action="demo-form.php" method="get">
+Firstname:<input type="text" name="fname" value="Peter" size="20">
+Lastname:<input type="text" name="lname" value="Griffin" size="20">
+<input type="button" value="Example Button">
+
+</form>
+</body>
+</html>
+
+
+CSS计数器
+CSS可以计算元素显示的次数
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<style>
+body {
+  counter-reset: section;
+}
+
+h2::before {
+  counter-increment: section;
+  content: "Section " counter(section) ": ";
+}
+</style>
+</head>
+<body>
+
+<h1>使用 CSS 计数器:</h1>
+<h2>HTML 教程</h2>
+<h2>CSS 教程</h2>
+<h2>JavaScript 教程</h2>
+
+<p><b>注意:</b> IE8 需要指定 !DOCTYPE 才可以支持该属性。</p>
+
+</body>
+</html>
+
+
+响应式网页布局
+根据窗口大小自适应显示内容
+例
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<style>
+* {
+  box-sizing: border-box;
+}
+ 
+body {
+  font-family: Arial;
+  padding: 10px;
+  background: #f1f1f1;
+}
+ 
+/* 头部标题 */
+.header {
+  padding: 30px;
+  text-align: center;
+  background: white;
+}
+ 
+.header h1 {
+  font-size: 50px;
+}
+ 
+/* 导航条 */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+ 
+/* 导航条链接 */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+ 
+/* 链接颜色修改 */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+ 
+/* 创建两列 */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 75%;
+}
+ 
+/* 右侧栏 */
+.rightcolumn {
+  float: left;
+  width: 25%;
+  background-color: #f1f1f1;
+  padding-left: 20px;
+}
+ 
+/* 图像部分 */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+ 
+/* 文章卡片效果 */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+ 
+/* 列后面清除浮动 */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+ 
+/* 底部 */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+ 
+/* 响应式布局 - 屏幕尺寸小于 800px 时，两列布局改为上下布局 */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+ 
+/* 响应式布局 -屏幕尺寸小于 400px 时，导航等布局改为上下布局 */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>我的网页</h1>
+  <p>重置浏览器大小查看效果。</p>
+</div>
+
+<div class="topnav">
+  <a href="#">链接</a>
+  <a href="#">链接</a>
+  <a href="#">链接</a>
+  <a href="#" style="float:right">链接</a>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>文章标题</h2>
+      <h5>2019 年 4 月 17日</h5>
+      <div class="fakeimg" style="height:200px;">图片</div>
+      <p>一些文本...</p>
+      <p>菜鸟教程 - 学的不仅是技术，更是梦想！菜鸟教程 - 学的不仅是技术，更是梦想！菜鸟教程 - 学的不仅是技术，更是梦想！菜鸟教程 - 学的不仅是技术，更是梦想！</p>
+    </div>
+    <div class="card">
+      <h2>文章标题</h2>
+      <h5>2019 年 4 月 17日</h5>
+      <div class="fakeimg" style="height:200px;">图片</div>
+      <p>一些文本...</p>
+      <p>菜鸟教程 - 学的不仅是技术，更是梦想！菜鸟教程 - 学的不仅是技术，更是梦想！菜鸟教程 - 学的不仅是技术，更是梦想！菜鸟教程 - 学的不仅是技术，更是梦想！</p>
+    </div>
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>关于我</h2>
+      <div class="fakeimg" style="height:100px;">图片</div>
+      <p>关于我的一些信息..</p>
+    </div>
+    <div class="card">
+      <h3>热门文章</h3>
+      <div class="fakeimg"><p>图片</p></div>
+      <div class="fakeimg"><p>图片</p></div>
+      <div class="fakeimg"><p>图片</p></div>
+    </div>
+    <div class="card">
+      <h3>关注我</h3>
+      <p>一些文本...</p>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <h2>底部区域</h2>
+</div>
+
+</body>
+</html>
+
+
+!important规则
+
+p {
+color: red !important;
+}
+此样式将覆盖其它样式优先显示
+

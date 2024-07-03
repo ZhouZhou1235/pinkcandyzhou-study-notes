@@ -1,0 +1,494 @@
+pygame 是python的2D游戏引擎
+
+
+安装
+pip install pygame
+
+
+第一个pygame程序
+
+import pygame,sys
+pygame.init()
+screen = pygame.display.set_mode((1280,720))
+clock = pygame.time.Clock()
+
+while True:
+	screen.fill("white")
+	clock.tick(60)
+	for event in pygame.event.get():
+		if event.type == pygame.QUIT:
+			pygame.quit()
+			sys.exit()
+			
+
+初始化
+
+pygame工作前需要初始化
+import pygame
+
+pygame.init()
+
+
+移动一个图像
+图像是一个surface对象
+不断将图片绘制到屏幕上并擦除旧像素
+
+绘制surface对象
+blit()
+
+更新屏幕
+pygame.display.update()
+
+设置刷新频率 时钟
+pygame.time.Clock()
+设置帧率
+tick()
+
+加载图片对象
+pygame.image,load().convert()
+
+创建图形窗口
+pygame.display.set_mode(())
+
+创建游戏主循环
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            sys.exit()
+            
+
+开始编写一个简单的案例
+打猩猩
+
+导入模块
+# Import Modules
+import os
+import pygame as pg
+
+if not pg.font:
+    print("Warning, fonts disabled")
+if not pg.mixer:
+    print("Warning, sound disabled")
+
+# 定位游戏的python文件
+main_dir = os.path.split(os.path.abspath(__file__))[0]
+# 指示查找位置
+data_dir = os.path.join(main_dir, "data")
+
+加载资源
+加载图片
+def load_image(name, colorkey=None, scale=1):
+    fullname = os.path.join(data_dir, name)
+    image = pg.image.load(fullname)
+
+    size = image.get_size()
+    size = (size[0] * scale, size[1] * scale)
+    image = pg.transform.scale(image, size)
+
+    image = image.convert()
+    if colorkey is not None:
+        if colorkey == -1:
+            colorkey = image.get_at((0, 0))
+        image.set_colorkey(colorkey, pg.RLEACCEL)
+    return image, image.get_rect()
+
+缩放对象
+pygame.transform.scale()
+
+加载声音
+def load_sound(name):
+    class NoneSound:
+        def play(self):
+            pass
+
+    if not pg.mixer or not pg.mixer.get_init():
+        return NoneSound()
+
+    fullname = os.path.join(data_dir, name)
+    sound = pg.mixer.Sound(fullname)
+
+    return sound
+
+玩家的拳头
+class Fist(pg.sprite.Sprite):
+    """moves a clenched fist on the screen, following the mouse"""
+
+    def __init__(self):
+        pg.sprite.Sprite.__init__(self)  # call Sprite initializer
+        self.image, self.rect = load_image("fist.png", -1)
+        self.fist_offset = (-235, -80)
+        self.punching = False
+
+    def update(self):
+        """move the fist based on the mouse position"""
+        pos = pg.mouse.get_pos()
+        self.rect.topleft = pos
+        self.rect.move_ip(self.fist_offset)
+        if self.punching:
+            self.rect.move_ip(15, 25)
+
+    def punch(self, target):
+        """returns true if the fist collides with the target"""
+        if not self.punching:
+            self.punching = True
+            hitbox = self.rect.inflate(-5, -5)
+            return hitbox.colliderect(target.rect)
+
+    def unpunch(self):
+        """called to pull the fist back"""
+        self.punching = False
+
+sprite的__init__将对象用于sprite，精灵具有rect和image
+
+猩猩
+class Chimp(pg.sprite.Sprite):
+    """moves a monkey critter across the screen. it can spin the
+    monkey when it is punched."""
+
+    def __init__(self):
+        pg.sprite.Sprite.__init__(self)  # call Sprite initializer
+        self.image, self.rect = load_image("chimp.png", -1, 4)
+        screen = pg.display.get_surface()
+        self.area = screen.get_rect()
+        self.rect.topleft = 10, 90
+        self.move = 18
+        self.dizzy = False
+
+    def update(self):
+        """walk or spin, depending on the monkeys state"""
+        if self.dizzy:
+            self._spin()
+        else:
+            self._walk()
+
+    def _walk(self):
+        """move the monkey across the screen, and turn at the ends"""
+        newpos = self.rect.move((self.move, 0))
+        if not self.area.contains(newpos):
+            if self.rect.left < self.area.left or self.rect.right > self.area.right:
+                self.move = -self.move
+                newpos = self.rect.move((self.move, 0))
+                self.image = pg.transform.flip(self.image, True, False)
+        self.rect = newpos
+
+    def _spin(self):
+        """spin the monkey image"""
+        center = self.rect.center
+        self.dizzy = self.dizzy + 12
+        if self.dizzy >= 360:
+            self.dizzy = False
+            self.image = self.original
+        else:
+            rotate = pg.transform.rotate
+            self.image = rotate(self.original, self.dizzy)
+        self.rect = self.image.get_rect(center=center)
+
+    def punched(self):
+        """this will cause the monkey to start spinning"""
+        if not self.dizzy:
+            self.dizzy = True
+            self.original = self.image
+ 
+初始化
+pg.init()
+screen = pg.display.set_mode((1280, 480), pg.SCALED)
+pg.display.set_caption("Monkey Fever")
+pg.mouse.set_visible(False)
+
+创建背景
+background = pg.Surface(screen.get_size())
+background = background.convert()
+background.fill((170, 238, 187))
+
+放置文本
+if pg.font:
+    font = pg.font.Font(None, 64)
+    text = font.render("Pummel The Chimp, And Win $$$", True, (10, 10, 10))
+    textpos = text.get_rect(centerx=background.get_width() / 2, y=10)
+    background.blit(text, textpos)
+    
+显示背景
+screen.blit(background, (0, 0))
+pg.display.flip()
+
+准备游戏对象
+whiff_sound = load_sound("whiff.wav")
+punch_sound = load_sound("punch.wav")
+chimp = Chimp()
+fist = Fist()
+allsprites = pg.sprite.RenderPlain((chimp, fist))
+clock = pg.time.Clock()
+
+主循环
+going = True
+while going:
+    clock.tick(60)
+    
+处理所有输入事件
+for event in pg.event.get():
+    if event.type == pg.QUIT:
+        going = False
+    elif event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE:
+        going = False
+    elif event.type == pg.MOUSEBUTTONDOWN:
+        if fist.punch(chimp):
+            punch_sound.play()  # punch
+            chimp.punched()
+        else:
+            whiff_sound.play()  # miss
+    elif event.type == pg.MOUSEBUTTONUP:
+        fist.unpunch()
+
+更新精灵
+allsprites.update()
+
+绘制场景
+screen.blit(background, (0, 0))
+allsprites.draw(screen)
+pg.display.flip()
+
+结束
+pg.quit()
+
+
+常用模块
+颜色
+pygame.Color
+
+显示
+pygame.display
+
+set_mode()
+初始化窗口
+get_surface()
+获取游戏对象
+flip()
+刷新对象到屏幕
+update()
+更新屏幕
+Info()
+显示视频对象
+get_wm_Info()
+获取当前窗口信息
+get_desktop_sizes
+获取桌面大小
+list_modes()
+获取可用的全屏模式
+tuggle_fullscreen()
+切换全屏
+set_icon()
+设置图标
+set_caption()
+设置程序标题
+
+
+绘制
+pygame.draw
+rect()
+矩形
+polygon()
+多边形
+circle()
+圆
+ellipse
+椭圆
+arc
+椭圆弧
+line
+直线
+lines
+多条线段
+aaline
+抗锯齿直线
+aalines
+多条抗锯齿线段
+
+
+事件
+pygame.event
+get()
+获取事件
+poll()
+获取单个事件
+peek()
+事件类型是否在队列中等待
+clear()
+清除所有事件
+set_blocked()
+禁用事件
+set_allowed()
+允许事件
+get_keyboard_grab()
+获取键盘状态
+
+
+字体
+pygame.font
+
+get_fonts()
+获取可用字体
+font.Font
+创建一个字体对象
+
+
+图像
+pygame.image
+
+load()
+加载一个图片对象
+
+
+关键
+pygame.key
+
+get_focused()
+若有键盘输入返回True
+
+get_pressed()
+获取键盘按钮状态
+
+
+预设变量
+pygame.locals
+
+
+声音
+pygame.mixer
+
+stop()
+停止声道
+pause()
+暂停声道
+unpause()
+恢复播放
+fadeout()
+淡出
+Sound
+
+创建一个声音对象
+Sound.play
+开始播放
+Sound.stop
+停止播放
+set_volume
+设置音量
+
+
+鼠标
+pygame.mouse
+
+get_pressed()
+获取鼠标按钮状态
+get_pos()
+获取鼠标位置
+get_rel()
+获取鼠标移动量
+set_pos()
+设置鼠标位置
+set_visible()
+隐藏鼠标光标
+set_cursor()
+设置新光标
+
+
+单位矩形
+pygame.rect
+
+copy()
+复制矩形
+move()
+移动矩形
+inflate() scale()
+缩放矩形
+update()
+设置位置和大小
+clamp()
+移动到另一个矩形内
+clip()
+裁剪矩形
+union()
+合并
+union()
+多矩形合并
+contains()
+包含
+collidepoint()
+碰撞
+colliderect()
+重叠
+collidelist()
+相交
+
+
+surface对象
+pygame.Surface
+blit()
+渲染
+blits()
+多个渲染
+convert()
+更改像素格式
+convert_alpha()
+更改像素格式，包括alpha通道
+copy()
+复制对象
+fill()
+纯色填充
+scroll()
+移动对象
+set_colorkey()
+设置色键
+get_size()
+获取对象尺寸
+get_rect()
+获取对象矩形面积
+
+
+时钟
+pygame.time
+
+wait()
+暂停程序
+set_timer()
+重复创建事件
+Clock
+创建一个时钟对象
+Clock.tick()
+更新时钟速度
+Clock.get_fps()
+获取时钟频率
+
+
+音乐
+pygame.mixer.music
+load()
+加载音乐
+unload()
+卸载音乐
+play()
+播放
+rewind()
+重新开始
+stop()
+停止
+pause()
+暂停
+unpause()
+恢复
+fadeout()
+淡出
+set_volume()
+设置音量
+
+
+PYGAME
+pygame
+init()
+初始化引擎
+quit()
+结束引擎
+error()
+报告错误
+
+
+

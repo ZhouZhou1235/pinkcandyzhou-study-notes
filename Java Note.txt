@@ -1,0 +1,475 @@
+Java 是高级程序设计语言
+
+JavaSE 标准版
+JavaEE 企业版
+JavaME 微型版
+
+Java特性
+语法类似C/C++
+面向对象
+分布式
+强类型
+安全性良好
+结构中立可移植
+动态
+
+
+环境配置
+windows
+下载官方的开发工具包JDK
+配置环境变量
+JAVA_HOME -
+CLASSPATH .;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar
+Path %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;
+java -version
+
+linux
+apt install openjdk-18-jre-headless
+
+
+Java语法
+Java程序是对象的集合
+重要概念
+对象 类 方法 实例变量
+
+第一个Java程序
+public class test1 {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+编译和运行
+javac test1.java
+java test1
+Hello World
+
+标识符
+修饰符
+变量
+关键字
+注释
+.java java源码
+.class java产生的字节码
+
+
+java面向对象
+对象：类的一个实例
+类：描述一个事物的模板
+局部变量：在方法或语句块中的变量，方法结束时将被销毁。
+成员变量：在类中且在方法外的变量
+类变量：声明了static的成员变量
+
+构造方法
+一个类至少要一个构造器
+public class Dog {
+	public Dog(){}
+}
+
+创建对象
+实例化
+Object referenceVariable = new Constructor();
+访问变量
+referenceVariable.variableName;
+访问方法
+referenceVariable.methodName();
+例
+public class test1 {
+    public test1(String name){
+        System.out.println(name+"正在学习java！");
+    }
+    public static void main(String[] args) {
+        test1 zhou = new test1("zhou");
+    }
+}
+例
+public class eeveelution {
+    String name;
+    int level;
+    String sex;
+    String skill;
+    public eeveelution(){
+        System.out.println("zhou is learning java!");
+    }
+    public void set(String a,int b,String c,String d){
+        name=a;level=b;sex=c;skill=d;
+    }
+    public void printInformation(){
+        System.out.println("我是等级为"+level+"的"+sex+name+"，我会"+skill+"！");
+    }
+    public static void main(String[] args){
+        eeveelution eevee1 = new eeveelution();
+        eevee1.set("伊布",25,"雄","高速星星");
+        eevee1.printInformation();
+    }
+}
+
+注意事项
+一个源文件中只能有一个public类，可有多个非public类。
+源文件名称需要与public类名称一致
+
+java包
+对类和接口进行分类
+
+import语句
+导入java类
+
+
+数据类型
+二进制 byte
+16位整数 short
+32位整数 int
+64位整数 long
+单精度浮点 float
+双精度浮点 double
+布尔值 boolean
+字符 char
+字符串 String
+
+声明常量
+final
+
+类型转换
+int n1=1;
+n1 = (float)n1;
+
+
+变量类型
+java是强类型语言，变量必须声明。
+局部变量 在内部声明
+成员变量 在类中且在方法或块外的变量
+静态变量 static 在类中且在方法或块外、只会初始化一次的变量
+参数变量 在方法上的变量
+
+
+修饰符
+访问控制
+可以控制类 变量 方法的访问
+default 默认 同java包内可见
+public 公开 对所有类可见
+private 私有 仅在此类中可见 不能修饰类
+protected 保护 对此类和子类可见 不能修饰类
+非访问修饰符
+static 静态 只初始化一次
+final 最后 锁定单位，不可被修改。
+abstract 抽象 模糊概括地描述逻辑
+synchronized 规定此方法只能由一个线程访问
+transient 预处理
+volatile 强制从共享内存中重新读取该成员变量的值
+
+
+运算符
+算术
++ - * / % ++ --
+关系
+== != > < >= <=
+位
+& | ^ ~ << >> >>>
+逻辑
+&& || !
+赋值
+= += -= *= /= %= <<= >>= &= ^= |=
+杂项
+?: 条件判断
+instanceof 类型检查
+
+
+循环
+while(){}
+do{}while()
+for(){}
+break
+continue
+
+
+判断
+if(){}
+if(){}else{}
+if(){}else if(){}else{}
+switch(expression){
+    case value :
+       //语句
+       break; //可选
+    case value :
+       //语句
+       break; //可选
+    //你可以有任意数量的case语句
+    default : //可选
+       //语句
+}
+
+
+java类 Math Number
+Number类
+java为内置数据类型提供了包装类
+包装类（Integer、Long、Byte、Double、Float、Short）是抽象类Number的子类
+
+Math类
+包含了基本的数学运算
+
+Numbe&Math 常用方法
+xxxValue() 返回xxx类型的值
+valueOf() 返回Number的内置数据类型
+toString() 返回数字字符串
+parseInt() 解析字符串成int
+abs() 绝对值
+ceil() 向上舍入
+floor() 向下舍入
+rint() 返回接近的整数
+round() 四舍五入
+min() 最小
+max() 最大
+exp() 返回e的次方
+log() 对数
+pow() 次方
+sqrt() 平方
+sin() 正弦
+cos() 余弦
+tan() 正切
+asin() 反正弦
+acos() 反余弦
+atan() 反正切
+atan2() 返回极坐标弧度
+toRadians() 角度化为弧度
+random() 返回一个浮点随机数
+
+
+java类 Character
+操作单个字符
+//  a装箱到Character对象中
+Character ch = 'a';
+// 拆箱
+char c = test('x');
+
+常用方法
+isLetter() 是否为字母
+isDigit() 是否为数字字符
+isWhitespace() 是否为空白
+isUpperCase() 是否为大写字母
+isLowerCase() 是否为小写字母
+toUpperCase() 化为大写
+toLowerCase() 化为小写
+
+
+java类 String
+字符串类
+创建字符串
+String str1 = "zhou";
+字符串长度
+str1.length()
+连接字符串
+concat() +
+输出格式化字符串
+printf() format()
+
+常用方法
+indexOf() 从字符串中查找字符/字符串
+isEmpty() 判断是否为空
+
+
+java类 StringBuffer
+可更改字符串
+append() 添加字符串
+reverse() 反转字符串
+delete() 按索引删除字符串
+insert() 插入字符串
+replace() 按索引替换字符串
+
+
+java数组
+声明数组
+dataType[] arrayRefVar;
+创建数组 
+arrayRefVar = new dataType[arraySize];
+或 dataType[] arrayRefVar = {value0, value1, ..., valuek};
+
+foreach循环
+可以不加索引直接遍历数组
+for(type element: array){System.out.println(element);}
+
+多维数组
+type[][] typeName = new type[typeLength1][typeLength2];
+
+
+java类 Date
+java.util.Date 提供日期和时间相关方法
+import java.util.Date;
+public class test1 {
+    public static void main(String[] args){
+        Date date = new Date();
+        System.out.println(date.toString());
+    }
+}
+
+
+正则表达式
+正则表达式(Regular Expression)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为"元字符"），可以用来描述和匹配字符串的特定模式。
+例
+import java.util.regex.*;
+class RegexExample1 {
+    public static void main(String[] args){
+        String content = "I am noob from runoob.com.";
+        String pattern = ".*runoob.*";
+        boolean isMatch = Pattern.matches(pattern, content);
+        System.out.println("字符串中是否包含了 'runoob' 子字符串? " + isMatch);
+    }
+}
+
+
+方法
+实现一个操作的代码块
+方法调用
+方法重载
+构造方法
+
+
+java流 文件 IO
+一个流可以理解为一个数据的序列。输入流表示从一个源读取数据，输出流表示向一个目标写数据。
+例 使用 BufferedReader 在控制台读取字符
+import java.io.*;
+public class test1 {
+    public static void main(String[] args) throws IOException {
+        char c;
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("输入字符, 按下 'q' 键退出。");
+        do {
+            c = (char) br.read();
+            System.out.println(c);
+        } while (c != 'q');
+    }
+}
+
+
+java类 scanner
+检测输入
+例
+import java.util.Scanner; 
+public class test1 {
+public static void main(String[] args) {
+    Scanner scan = new Scanner(System.in);
+    System.out.println("next方式接收：");
+    if (scan.hasNext()) {
+        String str1 = scan.next();
+        System.out.println("输入的数据为：" + str1);
+    }
+    scan.close();
+    }
+}
+
+
+java 异常
+如何处理异常？
+try {
+    // 可能会抛出异常的代码
+} catch (IOException e) {
+    // 处理异常的代码
+}
+
+
+java继承
+java类可以被继承
+class dogs extends animal {}
+java默认不支持多继承
+
+extends 单一继承
+implements 多继承
+super 访问父类的方法
+this 访问自己的方法
+final 最终类 不能被继承
+
+
+重写与重载
+方法可以被子类重写
+方法可以在类中重载
+
+
+多态
+对象的多种表现形式
+可以通过以下方式实现多态
+重写 接口 抽象类
+
+
+抽象类
+描述类的类，抽象类不能使用，需要继承。
+abstract
+例
+public class test1 {
+    public static void main(String[] args){
+        eevee eevee1 = new eevee();
+        eevee1.sayhi();
+    }
+}
+
+abstract class pokemon {
+    String name;
+    Integer level;
+    String sex;
+    void sayhi(){};
+}
+
+class eevee extends pokemon {
+    String name = "eevee1";
+    Integer level = 1;
+    String sex = "female";
+    void sayhi(){
+        System.out.println(name+level+sex+"I'm eevee1.");
+    }
+}
+
+
+java封装
+为代码块写合适的接口方法并控制访问权限
+
+
+java接口
+接口是抽象方法的集合
+interface 声明接口
+例
+public class test1 {
+    public static void main(String[] args){
+        eevee eevee1 = new eevee();
+        eevee1.info("伊布",1);
+    }
+}
+
+interface theInterface1 {
+    public void info(String name,Integer level);
+    public void eat();
+    public void run();
+}
+
+class eevee implements theInterface1 {
+    String name;
+    Integer level;
+    public void info(String name,Integer level){
+        System.out.println("eevee的基本信息"+name+level);
+    }
+    public void eat(){
+        System.out.println("eevee吃东西");
+    }
+    public void run(){
+        System.out.println("eevee在跑步");
+    }
+}
+
+
+java枚举
+例
+enum Color 
+{ 
+    RED, GREEN, BLUE; 
+} 
+public class MyClass { 
+  public static void main(String[] args) { 
+    for (Color myVar : Color.values()) {
+      System.out.println(myVar);
+    }
+  } 
+}
+
+
+java包
+将多个java类分类保存
+package 定义包名称
+import 导入包
+包就是放置java类的文件夹
+导入包就是把java类导入到目前位置执行程序

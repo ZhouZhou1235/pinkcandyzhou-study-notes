@@ -1,0 +1,137 @@
+Docker是Go语言开放的应用容器引擎
+
+Docker的应用场景
+web应用的自动化打包
+自动化测试
+在服务型环境中部署和调整数据库
+
+特性
+依赖Linux环境
+Docker容器允许高度可移植的工作负载
+可以在计算机、服务器、虚拟机上运行
+
+
+架构
+docker基本概念
+镜像 一个root文件系统
+容器 一个镜像实例化的运行实体
+仓库 储存镜像
+
+
+安装Docker
+Linux安装Docker（Ubuntu）
+输入命令
+curl -fsSL https://test.docker.com -o test-docker.sh
+sudo sh test-docker.sh
+
+Windows安装Docker
+启用虚拟机Hyper-V
+安装windows的linux子系统 WSL
+安装 Docker Desktop for Windows
+输入命令 docker run hello-world 检查是否安装完成
+
+
+Hello World
+创建第一个容器输出 你好，世界！
+docker run ubuntu:15.10 /bin/echo "Hello world"
+该命令的自然语言表述
+Docker 以 ubuntu15.10 镜像创建一个新容器，然后在容器里执行 bin/echo "Hello world"，然后输出结果。
+
+
+docker容器
+输入 docker 查看命令
+输入 docker command --help 查看命令用法
+
+启动docker
+docker run -it ubuntu /bin/bash
+使用 ubuntu 镜像启动一个容器，参数为以命令行模式进入该容器。
+
+退出终端 exit
+
+查看所有容器 docker ps -a
+
+启动容器 docker start [容器ID]
+
+停止容器 docker stop [容器ID]
+
+重启容器 docker restart [容器ID]
+
+进入容器 docker attach [容器ID]
+exec进入容器(退出不会造成停止)docker exec -it [容器ID] /bin/bash
+
+离开容器 exit
+
+导出容器 docker export [容器ID] > ubuntu.tar
+
+导入容器 cat docker/ubuntu.tar | docker import - test/ubuntu:v1
+
+删除容器 docker rm [容器ID]
+
+
+docker镜像
+
+列出本地镜像 docker images
+-i交互式操作 -t终端
+
+获取镜像 docker pull [镜像]
+
+查找镜像 docker search [镜像]
+
+删除镜像 docker rmi [镜像]
+
+创建镜像 docker commit -m="描述" -a="作者" [容器ID] [目标镜像名]
+
+构建镜像 docker build
+
+
+docker容器连接
+网络端口映射
+创建一个python应用 docker run -d -P training/webapp python app.py
+-P随机绑定端口号 -p指定绑定端口号
+
+容器互联
+docker 连接会创建一个父子关系，其中父容器可以看到子容器的信息。
+例
+创建网络 docker network create -d bridge test-net
+创建test1并加入test-net
+docker run -itd --name test1 --network test-net ubuntu /bin/bash
+创建test2并加入test-net
+docker run -itd --name test2 --network test-net ubuntu /bin/bash
+
+如果没有ping命令则安装ping
+apt-get update
+apt install iputils-ping
+
+配置DNS
+可以在宿主机的 /etc/docker/daemon.json 文件中增加以下内容来设置全部容器的 DNS
+{
+  "dns" : [
+    "114.114.114.114",
+    "8.8.8.8"
+  ]
+}
+仅在容器内配置
+docker run -it --rm -h host_ubuntu  --dns=114.114.114.114 --dns-search=test.com ubuntu
+
+
+docker仓库
+集中存放镜像的地方
+登录 docker login
+登出 docker logout
+搜索镜像 docker search [镜像]
+下载镜像 docker pull [镜像]
+推送镜像 docker push
+
+
+Dockerfile 构建镜像的文本文件
+
+
+Compose 定义和运行多容器 Docker 应用程序的工具
+
+
+docker machine
+在虚拟机上安装docker的工具
+
+
+集群管理
+Docker Swarm 是 Docker 的集群管理工具

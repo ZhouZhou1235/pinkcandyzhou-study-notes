@@ -1,0 +1,431 @@
+JavaScript 是 Web 的编程语言。
+所有现代的 HTML 页面都可以使用 JavaScript。
+
+web开发人员必须学习的三门语言
+HTML 定义了网页的内容
+CSS 描述了网页的布局
+JavaScript 控制了网页的行为
+
+JavaScript是嵌入HTML页面的代码
+
+JS写入HTML输出流
+</p>
+<script>
+document.write("<h1>这是一个标题</h1>");
+document.write("<p>这是一个段落。</p>");
+</script>
+<p>
+
+JS对事件的反应
+<button type="button" onclick="alert('欢迎!')">点我!</button>
+
+JS改变HTML内容
+<p id="demo">
+JavaScript 能改变 HTML 元素的内容。
+</p>
+<script>
+function myFunction()
+{
+	x=document.getElementById("demo");  // 找到元素
+	x.innerHTML="Hello JavaScript!";    // 改变内容
+}
+</script>
+<button type="button" onclick="myFunction()">点击这里</button>
+
+JS改变HTML图像
+<script>
+function changeImage()
+{
+    element=document.getElementById('myimage')
+    if (element.src.match("bulbon"))
+    {
+        element.src="/images/pic_bulboff.gif";
+    }
+    else
+    {
+        element.src="/images/pic_bulbon.gif";
+    }
+}
+</script>
+<img decoding="async" id="myimage" onclick="changeImage()" src="/images/pic_bulboff.gif" width="100" height="180">
+
+JS改变HTML样式
+<p id="demo">
+JavaScript 能改变 HTML 元素的样式。
+</p>
+<script>
+function myFunction()
+{
+	x=document.getElementById("demo") // 找到元素
+	x.style.color="#ff0000";          // 改变样式
+}
+</script>
+<button type="button" onclick="myFunction()">点击这里</button>
+	
+JS验证输入
+<p>请输入数字。如果输入值不是数字，浏览器会弹出提示框。</p>
+<input id="demo" type="text">
+<script>
+function myFunction()
+{
+	var x=document.getElementById("demo").value;
+	if(x==""||isNaN(x))
+	{
+		alert("不是数字");
+	}
+}
+</script>
+<button type="button" onclick="myFunction()">点击这里</button>
+
+
+用法
+在<script>中插入JS
+HTML文档中可放入不限数量的脚本
+可以把JS脚本放在<head><body>.js文件中
+
+
+输出
+显示数据
+window.alert() 警告框
+document.write() 写入HTML文档
+innerHTML 获取或写入HTML元素
+console.log() 写入控制台
+
+操作元素
+
+document.getElementById(id) 访问某个 HTML 元素
+
+<p id="demo">我的第一个段落</p>
+<script>
+document.getElementById("demo").innerHTML = "段落已修改。";
+</script>
+
+
+语法
+字面量
+数组（Array）字面量 定义一个数组：
+
+[40, 100, 1, 5, 25, 10]
+对象（Object）字面量 定义一个对象：
+
+{firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"}
+函数（Function）字面量 定义一个函数：
+
+function myFunction(a, b) { return a * b;}
+
+变量
+var定义变量
+var x, length
+x = 5
+length = 6
+
+操作符
+赋值，算术和位运算符	=  +  -  *  /	在 JS 运算符中描述
+条件，比较及逻辑运算符	==  != <  > 	在 JS 比较运算符中描述
+
+语句
+在 HTML 中，JavaScript 语句用于向浏览器发出命令。
+
+语句是用分号分隔：
+
+x = 5 + 6;
+y = x * 10;
+
+
+语句
+document.getElementById("demo").innerHTML = "你好 Dolly";
+
+;分隔JS语句
+{}将代码组合成代码块
+
+JS的语句标识符
+break	用于跳出循环。
+catch	语句块，在 try 语句块执行出错时执行 catch 语句块。
+continue	跳过循环中的一个迭代。
+do ... while	执行一个语句块，在条件语句为 true 时继续执行该语句块。
+for	在条件语句为 true 时，可以将代码块执行指定的次数。
+for ... in	用于遍历数组或者对象的属性（对数组或者对象的属性进行循环操作）。
+function	定义一个函数
+if ... else	用于基于不同的条件来执行不同的动作。
+return	退出函数
+switch	用于基于不同的条件来执行不同的动作。
+throw	抛出（生成）错误 。
+try	实现错误处理，与 catch 一同使用。
+var	声明一个变量。
+while	当条件语句为 true 时，执行语句块。
+
+注释
+//
+/**/
+
+
+变量
+var a;
+a = 5;
+
+
+数据类型
+typeof "zhou"
+字符串 数字 布尔值 数组 对象
+
+var cars=["Saab","Volvo","BMW"];
+或
+var cars=new Array();
+cars[0]="Saab";
+cars[1]="Volvo";
+cars[2]="BMW";
+
+var person={firstname:"John", lastname:"Doe", id:5566};
+对象有两种寻址方式
+name=person.lastname;
+name=person["lastname"];
+
+清空变量
+cars=null;
+person=null;
+
+声明变量类型
+var carname=new String;
+var x=      new Number;
+var y=      new Boolean;
+var cars=   new Array;
+var person= new Object;
+
+
+对象
+可以说 "JavaScript 对象是变量的容器"。
+
+但是，我们通常认为 "JavaScript 对象是键值对的容器"。
+
+键值对通常写法为 name : value (键与值以冒号分割)。
+
+键值对在 JavaScript 对象通常称为 对象属性。
+
+创建对象方法
+methodName : function() {}
+访问对象方法
+objectName.methodName()
+
+
+函数
+函数语法
+function functionname()
+{
+	//code
+}
+
+<button onclick="myFunction('Harry Potter','Wizard')">点击这里</button>
+<script>
+function myFunction(name,job){
+	alert("Welcome " + name + ", the " + job);
+}
+</script>
+
+只要函数运行完毕，本地变量就会被删除。
+
+
+作用域
+变量的集合叫作用域
+
+
+事件
+事件是发生在HTML元素上的事情
+常见的HTML事件
+下面是一些常见的HTML事件的列表:
+
+事件	描述
+onchange	HTML 元素改变
+onclick	用户点击 HTML 元素
+onmouseover	鼠标指针移动到指定的元素上时发生
+onmouseout	用户从一个 HTML 元素上移开鼠标时发生
+onkeydown	用户按下键盘按键
+onload	浏览器已完成页面的加载
+
+
+字符串
+索引位置访问字符
+var name = "zhou";
+var character = name[2];
+
+计算字符串长度
+<script>
+var txt = "Hello World!";
+document.write("<p>" + txt.length + "</p>");
+var txt="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+document.write("<p>" + txt.length + "</p>");
+</script>
+
+
+模板字符串
+一种方便的字符串语法，允许你在字符串中嵌入表达式和变量。
+
+`string text`
+
+<script>
+const name = 'Runoob';
+const age = 30;
+const message = `My name is ${name} and I'm ${age} years old.`;
+document.getElementById("demo").innerHTML = message;
+</script>
+
+
+运算符
++-*/
+
+
+比较和逻辑运算符
+==
+===
+!=
+!==
+>
+<
+>=
+<=
+
+&& and
+|| or
+! not
+
+
+条件语句
+if (condition)
+{
+	code
+}
+
+实例
+<script>
+function myFunction(){
+	var x="";
+	var time=new Date().getHours();
+	if (time<20){
+		x="Good day";
+    }
+	document.getElementById("demo").innerHTML=x;
+}
+</script>
+
+if (condition1){
+	code1
+}
+else if(condition2){
+	code2
+}
+else{
+	code3
+}
+
+
+switch语句
+switch(n)
+{
+	case 1:
+		code1
+		break;
+	case 2:
+		code2
+		break;
+	default:
+		code_other
+}
+
+var d=new Date().getDay(); 
+switch (d) 
+{ 
+  case 0:x="今天是星期日"; 
+  break; 
+  case 1:x="今天是星期一"; 
+  break; 
+  case 2:x="今天是星期二"; 
+  break; 
+  case 3:x="今天是星期三"; 
+  break; 
+  case 4:x="今天是星期四"; 
+  break; 
+  case 5:x="今天是星期五"; 
+  break; 
+  case 6:x="今天是星期六"; 
+  break; 
+}
+
+var d=new Date().getDay();
+switch (d)
+{
+    case 6:x="今天是星期六";
+    break;
+    case 0:x="今天是星期日";
+    break;
+    default:
+    x="期待周末";
+}
+document.getElementById("demo").innerHTML=x;
+
+
+for循环
+语法
+for (开始前执行;条件;完成后执行)
+{
+    被执行的代码块
+}
+
+cars=["BMW","Volvo","Saab","Ford"];
+for (var i=0;i<cars.length;i++){
+	document.write(cars[i] + "<br>");
+}
+
+function myFunction(){
+	var x;
+	var txt="";
+	var person={fname:"Bill",lname:"Gates",age:56}; 
+	for (x in person){
+		txt=txt + person[x];
+	}
+	document.getElementById("demo").innerHTML=txt;
+}
+
+
+while循环
+语法
+while(条件)
+{
+	code
+}
+
+变体
+do
+{
+	code
+}
+while();
+{
+	code
+}
+
+for与while比较
+cars=["BMW","Volvo","Saab","Ford"];
+var i=0;
+for (;cars[i];)
+{
+    document.write(cars[i] + "<br>");
+    i++;
+}
+
+cars=["BMW","Volvo","Saab","Ford"];
+var i=0;
+while (cars[i])
+{
+    document.write(cars[i] + "<br>");
+    i++;
+}
+
+
+break和continue语句
+break 跳出此循环
+continue 跳过本次循环
+
+JS标签
+语句可以被标记
+label:
+statements
+

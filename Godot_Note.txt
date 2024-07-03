@@ -1,0 +1,110 @@
+Godot 开源游戏引擎
+
+
+概述
+
+跨平台
+Windows
+macOS
+Linux
+Android
+Web
+
+面向对象
+
+支持2D和3D开发
+
+有丰富的开发工具
+
+支持的编程语言
+GDScript godot内置脚本
+C#
+GDExtension(C,C++,...)
+
+
+godot关键概念
+
+场景
+可复用的游戏单位，可以是角色，武器，菜单等。
+场景能嵌套
+
+节点
+场景由节点构成
+节点是最小游戏单位
+
+场景树
+所有场景都集中到场景树
+
+信号
+游戏中有很多事件，事件发生时节点会发出信号传递信息到另外的节点。
+
+
+godot编辑器
+视窗 文件栏 场景查看器 单位检查器
+四个主屏幕：2D 3D 脚本 图书馆
+帮助指南
+
+
+创建新项目
+第一个godot项目
+添加Label节点 输入 hello world
+保存为场景 .tscn
+运行
+
+
+godot的编程语言
+完全支持
+gdScript C#
+首选gdScript编写游戏逻辑
+
+编写第一个gdScript脚本
+对节点新建脚本
+
+extends Sprite2D
+var speed = 500
+var angular_speed = PI
+func _init():
+	print("unit1")
+func _process(delta):
+	rotation += angular_speed * delta
+	var velocity = Vector2.UP.rotated(rotation) * speed
+	position += velocity * delta
+
+语法类似python
+
+接收用户的输入
+
+extends Sprite2D
+var speed = 400
+var angular_speed = PI
+func _process(delta):
+	var direction = 0
+	if Input.is_action_pressed("ui_left"):
+		direction = -1
+	if Input.is_action_pressed("ui_right"):
+		direction = 1
+	rotation += angular_speed * direction * delta
+	var velocity = Vector2.ZERO
+	if Input.is_action_pressed("ui_up"):
+		velocity = Vector2.UP.rotated(rotation) * speed
+	if Input.is_action_pressed("ui_down"):
+		velocity = Vector2.DOWN.rotated(rotation) * speed
+	position += velocity * delta
+
+使用信号
+
+extends Sprite2D
+var speed = 400
+var angular_speed = PI
+func _ready():
+	var timer = get_node("Timer")
+	timer.timeout.connect(_on_timer_timeout)
+func _process(delta):
+	rotation += angular_speed * delta
+	var velocity = Vector2.UP.rotated(rotation) * speed
+	position += velocity * delta
+func _on_button_pressed():
+	set_process(not is_processing())
+func _on_timer_timeout():
+	visible = not visible
+

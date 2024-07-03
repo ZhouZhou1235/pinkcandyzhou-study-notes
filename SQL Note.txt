@@ -1,0 +1,133 @@
+SQL是用于访问和处理数据库的标准的计算机语言
+
+SELECT * FROM Websites;
+
+
+简介
+SQL 指结构化查询语言
+SQL 的范围包括数据插入、查询、更新和删除，数据库模式创建和修改，以及数据访问控制。
+
+
+SQL语法
+在您的网站中使用 SQL
+要创建一个显示数据库中数据的网站，您需要：
+
+RDBMS 数据库程序（比如 MS Access、SQL Server、MySQL）
+使用服务器端脚本语言，比如 PHP 或 ASP
+使用 SQL 来获取您想要的数据
+使用 HTML / CSS
+
+SQL语句
+SELECT * FROM Websites;
+
+一些最重要的 SQL 命令
+SELECT - 从数据库中提取数据
+UPDATE - 更新数据库中的数据
+DELETE - 从数据库中删除数据
+INSERT INTO - 向数据库中插入新数据
+CREATE DATABASE - 创建新数据库
+ALTER DATABASE - 修改数据库
+CREATE TABLE - 创建新表
+ALTER TABLE - 变更（改变）数据库表
+DROP TABLE - 删除表
+CREATE INDEX - 创建索引（搜索键）
+DROP INDEX - 删除索引
+
+
+SELECT语句
+选择字段
+SELECT column1, column2, ...
+FROM table_name;
+
+
+SELECT DISTINCT语句
+选择不重复字段
+SELECT DISTINCT column1, column2, ...
+FROM table_name;
+
+
+WHERE语句
+选择字段并按条件过滤
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+
+例
+SELECT * FROM Websites WHERE country='CN';
+
+可在WHERE中使用运算符
+WHERE 子句中的运算符
+下面的运算符可以在 WHERE 子句中使用：
+
+运算符	描述
+=	等于
+<>	不等于。注释：在 SQL 的一些版本中，该操作符可被写成 !=
+>	大于
+<	小于
+>=	大于等于
+<=	小于等于
+BETWEEN	在某个范围内
+LIKE	搜索某种模式
+IN	指定针对某个列的多个可能值
+
+
+AND & OR 运算符
+且
+SELECT * FROM Websites
+WHERE country='CN'
+AND alexa > 50;
+
+或
+SELECT * FROM Websites
+WHERE country='USA'
+OR country='CN';
+
+
+ORDER BY 关键字
+排序
+SELECT column1, column2, ...
+FROM table_name
+ORDER BY column1, column2, ... ASC|DESC;
+
+ASC：表示按升序排序。
+DESC：表示按降序排序。
+
+例
+SELECT * FROM Websites
+ORDER BY alexa DESC;
+
+
+INSERT INTO 语句
+向表中插入新记录
+
+INSERT INTO table_name
+VALUES (value1,value2,value3,...);
+
+INSERT INTO table_name (column1,column2,column3,...)
+VALUES (value1,value2,value3,...);
+
+例
+INSERT INTO Websites (name, url, alexa, country)
+VALUES ('百度','https://www.baidu.com/','4','CN');
+
+
+UPDATE 语句
+更新表中的记录
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+
+例
+UPDATE Websites 
+SET alexa='5000', country='USA' 
+WHERE name='菜鸟教程';
+
+
+DELETE 语句
+删除表中的记录
+DELETE FROM table_name
+WHERE condition;
+
+例
+DELETE FROM Websites
+WHERE name='Facebook' AND country='USA';

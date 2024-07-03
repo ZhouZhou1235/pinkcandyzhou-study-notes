@@ -1,0 +1,404 @@
+C++ 进一步扩展了C，是面向对象的语言。
+
+C++ 特性
+静态类型 不规则  速度快
+C是C++的子集，C程序也属于C++程序
+
+C++ 应用
+大型游戏开发
+嵌入式系统
+计算机图形学
+
+
+环境配置
+需要文本编辑器 和 C++编译器
+
+linux
+g++ -v
+
+windows
+下载mingw并设置PATH
+
+g++的使用
+gcc 是c编译器 链接c标准库
+g++ 是c++编译器 链接c++标准库
+
+编译一个c++程序
+g++ file.cpp -o file1
+
+
+c++语法
+c++是类的集合
+
+第一个c++程序
+#include <iostream>
+using namespace std;
+int main(){
+	cout << "Hello World";
+	return 0;
+}
+解释
+引入头文件
+使用std命名空间
+main函数
+打印helloworld
+返回 结束程序
+
+; 是结束符
+
+标识符
+
+关键字
+
+注释 //
+
+转义符
+
+
+数据类型
+布尔 字符 整数 浮点 双浮点  无 宽字符
+常用声明
+char int float double void wchar_t
+
+typedef可以定义一个新名字
+typedef type newname
+
+枚举 enum
+enum color { red, green, blue } c;
+c = blue;
+
+
+作用域
+局部 全局 参数 块 类
+
+
+常量
+定义
+#define identifier value
+const type variable=value;
+
+
+修饰符
+即int char等
+
+
+储存类
+定义变量和函数的生命周期
+auto 自动判断变量类型
+register 定义在寄存器中的变量（没有变量位置但可以提速）
+static 在程序运行过程始终存在
+extern 在另一个文件中声明一个全局变量
+
+
+运算符
+算术
++ - * / % ++ --
+
+关系
+== != > < >= <=
+
+逻辑
+&& || !
+
+位运算
+& | ^
+
+赋值
+= += -= *= /= %= <<= >>= &= ^= |=
+
+杂项
+sizeof 返回变量大小
+条件运算 Condition ? X : Y
+, 简单分隔
+. -> 成员运算符
+cast() 	强制转换运算
+& 指针运算符 & 返回变量的地址
+* 指针运算符 * 指向一个变量
+
+
+循环
+
+while(){}
+for(){}
+do{}while()
+
+break continue goto
+
+
+判断
+
+if(){}
+if(){}else{}
+switch(){case xxx:code;default:code;}
+
+?=
+
+
+函数
+return_type function_name(){}
+
+lembda匿名函数
+[capture](parameters)->return-type{body}
+例
+[](int x, int y) -> int { int z = x + y; return z + x; }
+
+
+数字
+声明
+short int long float double
+赋值
+int x=1;
+
+c常用数学运算 #include<cmath>
+cos()
+sin()
+tan()
+log()
+pow()
+hypot() // 三角形斜边
+sqrt()
+fabs() // 绝对值
+floor()
+
+随机数
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+using namespace std;
+int main(){
+    srand((unsigned)time(NULL));
+    for(int i=0;i<10000;i++){
+        int j;
+        j = rand();
+        cout << j << endl;
+    }
+    return 0;
+}
+
+
+数组
+int arr[3] = {1,2,3}
+
+#include <iostream>
+using namespace std;
+int main(){
+    char arr1[5] = {'z','h','o','u','\0'};
+    cout << arr1 << endl;
+    return 0;
+}
+
+操作字符的函数
+strcpy()
+strcat() // 连接字符串
+strlen()
+strcmp() // 判断字符串相同
+strchr() // 返回一个指针，指向字符串 s1 中字符 ch 的第一次出现的位置。
+strstr() // 返回一个指针，指向字符串 s1 中字符串 s2 的第一次出现的位置。
+
+
+指针
+变量的内存位置可用&访问地址
+指针是指向变量地址的变量
+定义
+type *var-name;
+
+使用指针
+int x = 1;
+int *ip; // 定义指针
+ip = &x; // 储存变量地址
+cout<<ip<<endl; // 输出变量地址
+cout<<*ip<<endl; // 输出变量的值
+
+
+引用
+int i;
+int& r = i;
+
+
+时间
+#include <iostream>
+#include <ctime>
+ 
+using namespace std;
+ 
+int main( )
+{
+   // 基于当前系统的当前日期/时间
+   time_t now = time(0);
+   
+   // 把 now 转换为字符串形式
+   char* dt = ctime(&now);
+ 
+   cout << "本地日期和时间：" << dt << endl;
+ 
+   // 把 now 转换为 tm 结构
+   tm *gmtm = gmtime(&now);
+   dt = asctime(gmtm);
+   cout << "UTC 日期和时间："<< dt << endl;
+}
+
+
+基本输入输出
+<iostream>
+定义了基本输入输出流
+<iomanip>
+声明对执行标准化 I/O 有用的服务
+<fstream>
+为用户控制的文件处理声明服务
+
+例
+#include <iostream>
+using namespace std;
+int main(){
+    char name[100];
+    cin >> name;
+    cout << name << endl;
+    return 0;
+}
+
+
+结构体
+struct type_name {
+member_type1 member_name1;
+member_type2 member_name2;
+member_type3 member_name3;
+.
+.
+} object_names;
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+int main(){
+    struct furryUser{
+        char name[10];
+        int age;
+    };
+    furryUser furryUser1;
+    strcpy(furryUser1.name,"zhou");
+    furryUser1.age = 20;
+    cout << furryUser1.name << furryUser1.age << endl;
+    return 0;
+}
+
+
+C++ 面向对象
+C++支持面向对象编程
+
+类
+class myclass1{
+	修饰符:
+		成员变量;
+		方法(){}
+}
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+class furryUser {
+    public:
+        char name[20];
+        char sex[4];
+    void sayhi(){
+        cout << "毛绒绒是最棒的！" << endl;
+        return;
+    }
+};
+int main(){
+    furryUser zhou;
+    strcpy(zhou.name,"pinkcandyzhou");
+    strcpy(zhou.sex,"雄");
+    zhou.sayhi();
+    cout << zhou.name << ' ' << zhou.sex << endl;
+    return 0;
+}
+
+
+类继承
+例
+#include <iostream>
+#include <cstring>
+using namespace std;
+class furryUser {
+    public:
+        char name[20];
+        char sex[4];
+        void sayhi(){
+            cout << "毛绒绒是最棒的！" << endl;
+            return;
+        }
+};
+class eevee: public furryUser {
+    public:
+        char type[20];
+        void eevee_sayhi(){
+            cout << "我是继承小兽furryUser的伊布！" << endl;
+            return;
+        }
+};
+int main(){
+    furryUser zhou;
+    strcpy(zhou.name,"pinkcandyzhou");
+    strcpy(zhou.sex,"雄");
+    zhou.sayhi();
+    cout << zhou.name << ' ' << zhou.sex << endl;
+    eevee eevee1;
+    strcpy(eevee1.name,"伊布布伊");
+    strcpy(eevee1.sex,"雌");
+    eevee1.sayhi();
+    eevee1.eevee_sayhi();
+    cout << eevee1.name << ' ' << eevee1.sex << endl;
+    return 0;
+}
+
+
+方法的重载
+class printData
+{
+   public:
+      void print(int i) {
+        cout << "整数为: " << i << endl;
+      }
+ 
+      void print(double  f) {
+        cout << "浮点数为: " << f << endl;
+      }
+ 
+      void print(char c[]) {
+        cout << "字符串为: " << c << endl;
+      }
+};
+
+
+数据抽象
+只提供接口而隐藏具体细节
+例如
+#include <iostream>
+using namespace std;
+ 
+int main( )
+{
+   cout << "Hello C++" <<endl;
+   return 0;
+}
+cout是一个接口，能向控制台输出内容，但不知道是如何工作的。
+
+
+数据封装
+将数据和方法封装到类中
+
+
+C++接口 抽象类
+class Box
+{
+   public:
+      // 纯虚函数
+      virtual double getVolume() = 0;
+   private:
+      double length;      // 长度
+      double breadth;     // 宽度
+      double height;      // 高度
+};
+接口描述了类的行为和功能，而不需要完成类的特定实现。
+
+

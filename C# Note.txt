@@ -1,0 +1,201 @@
+C#
+微软公司开发的现代面向对象编程语言
+
+C# 基于 C/C++
+
+特性
+面向对象 非常类似Java
+组件化
+跨平台
+.NET框架
+
+
+环境配置
+.NET框架
+.NET是微软的跨平台框架
+可以编写：
+windows程序
+windows应用
+web应用
+web服务
+
+C# C++ VisualBasic JavaScript COBOL等语言可以与.NET交互
+.NET由组件构成
+部分组件
+CLR公共语言运行库
+.NET类库
+公共语言规范
+通用类型系统
+元数据
+windows窗体
+ASP.NET
+ADO.NET
+windows工作流
+windows显示
+windows通信
+LINQ
+
+集成开发环境IDE
+VS
+
+对于Linux
+Ubuntu apt install (.net)
+
+
+C#程序结构
+第一个C#程序
+using System;
+namespace HelloWorldApplication
+{
+   class HelloWorld
+   {
+      static void Main(string[] args)
+      {
+         /* 我的第一个 C# 程序*/
+         Console.WriteLine("Hello World");
+         Console.ReadKey();
+      }
+   }
+}
+using System 包含命名空间
+namespace 声明命名空间
+class 类
+Main 方法 程序从此开始
+/**/ 注释
+
+注意
+大小写敏感
+语句用 ; 结尾
+与Java不同 C#允许类名称与文件名不一致
+
+执行C#程序
+VS run
+或者使用命令行 （配好环境变量）
+csc ./test1.cs
+
+
+C#语法
+using关键字
+包含命名空间
+using System;
+
+class 类
+
+注释
+// /**/
+
+成员变量
+
+成员函数
+
+实例化类
+classname theObj = new classname();
+
+标识符
+
+关键字
+
+
+数据类型
+值类型 ValueType
+bool
+byte
+char
+double
+float
+int
+long
+short
+sizeof() 返回数据值长度
+
+引用类型 ReferenceType
+object 对象
+dynamic 动态
+String 字符串
+@转义符
+String str1 = @"C:\Windows";
+就像在PHP中
+$str1 = <<<EOF
+	C:\Windows
+EOF;
+
+指针类型 pointerType
+type* identifier
+
+
+类型转换
+隐式
+byte a = 10;
+int b = a;
+
+显式
+b = (int)a;
+
+转换
+使用Convert类
+string str = "123";
+int num = Convert.ToInt32(str);
+使用Parse
+string str = "123.45";
+double d = double.Parse(str);
+
+
+变量
+储存区的名字
+<data_type> <variable_list>;
+<data_type> <variable_name> = value;
+接收输入
+Console.ReadLine()
+
+
+作用域
+{} 确定作用域
+局部
+块级作用域
+方法参数作用域
+全局
+
+
+常量
+定义常量
+const <data_type> <constant_name> = value;
+
+
+运算符
+算术
++ - * / % ++ --
+关系
+== != > < >= <=
+逻辑
+&& || !
+位
+& | ^ ~ >> <<
+赋值
+= += -= *= /= %= <<= >>= &= ^= |=
+杂项
+sizeof() 返回数据类型大小
+typeof() 返回class类型
+& 返回变量地址
+* 变量指针
+?: 条件表达式
+is 判断对象是否为这个类
+as 强制转换对象
+
+
+条件判断
+if(){}
+if(){}else{}
+if(){}else if(){}else{}
+switch(expression){case constant-expression:code;break;default:code;break;}
+?:
+
+
+循环
+while(){}
+for(){}
+foreach(var item in collection){}
+do{}while()
+break
+continue
+
+

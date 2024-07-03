@@ -1,0 +1,76 @@
+PWA
+渐进式Web应用
+
+开发步骤
+HTTPS服务器
+manifest.json
+service worker
+
+服务器通过HTTPS连接（或localhost）
+填写manifest.json文件，内容为应用的基本信息。
+例
+{
+  "name": "ZZ粉糖粒子WW",
+  "short_name": "ZZWW",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "A simple furry images Web - PinkCandy",
+  "icons": [
+    {
+      "src": "fileLibrary/images/theSignPWA.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "web"
+    },
+    {
+      "platform": "play",
+      "url": "http://localhost"
+    }
+  ]
+}
+
+在头标签中link该json文件
+<link rel="manifest" href="manifest.json" />
+
+在首页注册service worker
+<script>
+    // 注册service worker
+    window.addEventListener('load',()=>{
+        if('serviceWorker' in navigator){
+            navigator.serviceWorker
+            .register('./sw.js')
+            .then(registration => {
+                console.log(registration)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+    });
+</script>
+
+sw.js执行操作
+// 开始缓存服务器文件
+self.addEventListener('install',event => {
+    // 跳过等待
+    self.skipWaiting();
+})
+
+// 清除旧文件
+self.addEventListener('activate',event => {
+    console.log('activate',event);
+    // service worker激活后立刻控制
+    self.clients.claim();
+})
+
+// 接收网络回应
+self.addEventListener('fetch',event => {
+    console.log('fetch',event);
+})
+
+完成PWA应用添加
